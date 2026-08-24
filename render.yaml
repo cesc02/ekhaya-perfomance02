@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ekhaya-performance-hub
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
