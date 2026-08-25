@@ -101,325 +101,381 @@ const FITNESS_TREND = [
   { week: "Wk4", avg: 85 }, { week: "Wk5", avg: 84 }, { week: "Wk6", avg: 87 }, { week: "Wk7", avg: 85 },
 ];
 
-/* ---------------- Cashbook Revenue Account Codes ---------------- */
-const REVENUE_ACCOUNTS = {
-  "EFC101-5001": "Sponsorship",
-  "EFC101-5002": "Gate Collections",
-  "EFC101-5003": "Jersey & Other Merchandise",
-  "EFC101-5004": "Subventions",
-  "EFC101-5005": "Donations",
-  "EFC101-5006": "TV Rights",
-  "EFC101-5007": "Other Income",
+/* ---------------- Cashbook 2026: Revenue Account ---------------- */
+const DEPT_MAP = {
+  "1": "Administration",
+  "2": "Mens Team",
+  "3": "Womens Team",
+  "4": "Reserve Team",
+  "5": "Youth Team",
+  "6": "Transfers",
 };
 
-const INITIAL_CASHBOOK = [
-  { id: 1, date: "2025-01-01", description: "Opening Balance", details: "Cashbook Revenue 2025", accountCode: "", amount: 92200, type: "credit" },
-  { id: 2, date: "2025-01-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 191000, type: "debit" },
-  { id: 3, date: "2025-02-11", description: "Cheque Deposit", details: "NBM Chq:002225", accountCode: "EFC101-5002", amount: 1952080, type: "credit" },
-  { id: 4, date: "2025-02-21", description: "Online Banking Transfer", details: "Transfer for Feb 2025 Week 3 Budget", accountCode: "", amount: 50000, type: "debit" },
-  { id: 5, date: "2025-02-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 191000, type: "debit" },
-  { id: 6, date: "2025-02-26", description: "Online Banking Transfer", details: "Ekhaya Football Club Share of Costs", accountCode: "EFC101-5005", amount: 7142857, type: "credit" },
-  { id: 7, date: "2025-02-26", description: "Online Banking Transfer", details: "Ekhaya Hardelec Shared cost for Ekh", accountCode: "EFC101-5005", amount: 7142857, type: "credit" },
-  { id: 8, date: "2025-02-26", description: "Online Banking Transfer", details: "Ekhaya football club share", accountCode: "EFC101-5005", amount: 7142857, type: "credit" },
-  { id: 9, date: "2025-02-26", description: "Cash Deposit", details: "KAVINA", accountCode: "EFC101-5005", amount: 3000000, type: "credit" },
-  { id: 10, date: "2025-02-26", description: "Online Banking Transfer", details: "SPONSORSHIP FOR FOOTBALL", accountCode: "EFC101-5001", amount: 7500000, type: "credit" },
-  { id: 11, date: "2025-02-26", description: "Online Banking Transfer", details: "Salary Funding", accountCode: "", amount: 0, type: "credit" },
-  { id: 12, date: "2025-02-27", description: "Online Banking Transfer", details: "Northgate contribution", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 13, date: "2025-03-14", description: "Online Banking Transfer", details: "Revenue to Ekhaya Ops", accountCode: "", amount: 0, type: "debit" },
-  { id: 14, date: "2025-03-19", description: "Transfer In", details: "CHIMWEMWE CHIGOM", accountCode: "EFC101-5003", amount: 147200019, type: "credit" },
-  { id: 15, date: "2025-03-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 191000, type: "debit" },
-  { id: 16, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5005", accountCode: "EFC101-5005", amount: 12600, type: "credit" },
-  { id: 17, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5005", accountCode: "EFC101-5005", amount: 1200000, type: "credit" },
-  { id: 18, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 160000, type: "credit" },
-  { id: 19, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5005", accountCode: "EFC101-5005", amount: 1334900, type: "credit" },
-  { id: 20, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5001", accountCode: "EFC101-5001", amount: 15000000, type: "credit" },
-  { id: 21, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5005", accountCode: "EFC101-5005", amount: 1300000, type: "credit" },
-  { id: 22, date: "2025-03-26", description: "Online Banking Transfer", details: "EFC101-5005", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 23, date: "2025-03-26", description: "Online Banking Transfer", details: "Sponsorship Ekhaya FC Hardelec", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 24, date: "2025-04-04", description: "Online Banking Transfer", details: "Revenue to Ekhaya Ops", accountCode: "", amount: 0, type: "debit" },
-  { id: 25, date: "2025-04-08", description: "Online Banking Transfer", details: "Revenue to Ops Transfer", accountCode: "", amount: 0, type: "debit" },
-  { id: 26, date: "2025-04-14", description: "Online Banking Transfer", details: "Sponsorship Ekhaya FC Zomba", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 27, date: "2025-04-15", description: "Online Banking Transfer", details: "Sponsorship Ekhaya FC Northgate", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 28, date: "2025-04-15", description: "Cash Deposit", details: "GATE COLLECTION EKHAYA - GREGORY MANDOWA", accountCode: "EFC101-5002", amount: 29100, type: "credit" },
-  { id: 29, date: "2025-04-15", description: "Online Banking Transfer", details: "EK10SH to Ekhaya FC contribution", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 30, date: "2025-04-16", description: "Online Banking Transfer", details: "Ekhaya Football Club Sponsorship", accountCode: "EFC101-5001", amount: 7500000, type: "credit" },
-  { id: 31, date: "2025-04-19", description: "Online Banking Transfer", details: "EFC Salaries Account", accountCode: "", amount: 0, type: "debit" },
-  { id: 32, date: "2025-04-22", description: "Cash Deposit", details: "ONLY BANDA", accountCode: "EFC101-5002", amount: 258500, type: "credit" },
-  { id: 33, date: "2025-04-22", description: "Transfer In", details: "MBENDERA GEORGE", accountCode: "EFC101-5003", amount: 147200019, type: "credit" },
-  { id: 34, date: "2025-04-24", description: "Online Banking Transfer", details: "EKHAYA GOLD JERSEY", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 35, date: "2025-04-24", description: "Online Banking Transfer", details: "EK10SH to Ekhaya FC contribution for", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 36, date: "2025-04-25", description: "Mobile Banking Transfer", details: "From: JOHN JAMES MAKONDETSA", accountCode: "EFC101-5003", amount: 312000, type: "credit" },
-  { id: 37, date: "2025-04-25", description: "Online Banking Transfer", details: "Ekhaya FC Sponsorship", accountCode: "EFC101-5005", amount: 1000000, type: "credit" },
-  { id: 38, date: "2025-04-28", description: "Cash Deposit", details: "BLESSINGS NGWEMBELE", accountCode: "EFC101-5003", amount: 11700000, type: "credit" },
-  { id: 39, date: "2025-04-28", description: "Transfer In", details: "KAMWENDO MZANGA", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 40, date: "2025-04-28", description: "Cash Deposit", details: "BLESSINGS GWEMBELE", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 41, date: "2025-04-29", description: "Transfer In", details: "PHIRI CHIKUMBUTS", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 42, date: "2025-04-30", description: "Online Banking Transfer", details: "Luntha Payment", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 43, date: "2025-05-02", description: "Mobile Banking Transfer", details: "From: CRISPIN RODNY MTIKE", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 44, date: "2025-05-02", description: "Transfer In", details: "GRAHAM CHIPANDE", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 45, date: "2025-05-02", description: "Transfer In", details: "MTHUNZI WHAYO", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 46, date: "2025-05-02", description: "Online Banking Transfer", details: "Revenue to Ops Transfer", accountCode: "", amount: 0, type: "debit" },
-  { id: 47, date: "2025-05-02", description: "Mobile Banking Transfer", details: "From: ESTHER COROA", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 48, date: "2025-05-02", description: "Cash Deposit", details: "BLESSINGS GWEMBELE", accountCode: "EFC101-5003", amount: 1300000, type: "credit" },
-  { id: 49, date: "2025-05-02", description: "Transfer In", details: "PATRICIA JIMU", accountCode: "EFC101-5003", amount: 180000, type: "credit" },
-  { id: 50, date: "2025-05-02", description: "EFT Incoming", details: "NSEULA CHARLES YAMIKI", accountCode: "EFC101-5003", amount: 8556000, type: "credit" },
-  { id: 51, date: "2025-05-02", description: "Mobile Banking Transfer", details: "From: FOSTINO MAELE", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 52, date: "2025-05-03", description: "Mobile Banking Transfer", details: "From: MICHAEL BRIGHT SOMANJEE", accountCode: "EFC101-5003", amount: 900000, type: "credit" },
-  { id: 53, date: "2025-05-03", description: "Mobile Banking Transfer", details: "From: MICHAEL BRIGHT SOMANJEE", accountCode: "EFC101-5003", amount: 300000, type: "credit" },
-  { id: 54, date: "2025-05-03", description: "Mobile Banking Transfer", details: "From: KANKONDO JOHN", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 55, date: "2025-05-05", description: "Mobile Banking Transfer", details: "From: WILLIAM MPINGANJIRA", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 56, date: "2025-05-05", description: "Cash Deposit", details: "BLESSINGS GWEMBELE", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 57, date: "2025-05-06", description: "Transfer In", details: "HAU KLEMA CHISOM", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 58, date: "2025-05-06", description: "Cash Deposit", details: "BLESSINGS", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 59, date: "2025-05-06", description: "Mobile Banking Transfer", details: "From: CHIPUNGU ALEX KENNIE ALLAN", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 60, date: "2025-05-08", description: "Mobile Banking Transfer", details: "From: EDGAR LEWIS CHILUMPHA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 61, date: "2025-05-08", description: "Mobile Banking Transfer", details: "From: MATHEWS MTIMAUKANENA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 62, date: "2025-05-08", description: "Online Banking Transfer", details: "EK10SH to Ekhaya FC contribution for", accountCode: "EFC101-5005", amount: 1500000, type: "credit" },
-  { id: 63, date: "2025-05-09", description: "Mobile Banking Transfer", details: "From: MADALO KALEKENI PHIRI", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 64, date: "2025-05-09", description: "Online Banking Transfer", details: "EFC101-5001", accountCode: "EFC101-5001", amount: 120000, type: "credit" },
-  { id: 65, date: "2025-05-09", description: "Online Banking Transfer", details: "EFC101-5001", accountCode: "EFC101-5001", amount: 600000, type: "credit" },
-  { id: 66, date: "2025-05-09", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 840000, type: "credit" },
-  { id: 67, date: "2025-05-12", description: "Online Banking Transfer", details: "Sponsorship Ekhaya FC", accountCode: "EFC101-5001", amount: 7500000, type: "credit" },
-  { id: 68, date: "2025-05-12", description: "Online Banking Transfer", details: "G Chitera Replicas", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 69, date: "2025-05-16", description: "Mobile Banking Transfer", details: "From: MICHAEL EDWARD", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 70, date: "2025-05-16", description: "Cash Deposit", details: "BLESSINGS GWEMBELE", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 71, date: "2025-05-16", description: "Cash Deposit", details: "BLESSINGS GWEMBELE", accountCode: "EFC101-5003", amount: 150000, type: "credit" },
-  { id: 72, date: "2025-05-16", description: "Transfer In", details: "TANAKA PHILIP CH", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 73, date: "2025-05-16", description: "Transfer In", details: "GAZA INVESTMENTS", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 74, date: "2025-05-16", description: "Transfer In", details: "PETER MUKHITO", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 75, date: "2025-05-16", description: "Transfer In", details: "From Acc.No. 1040100794395", accountCode: "EFC101-5003", amount: 146000, type: "credit" },
-  { id: 76, date: "2025-05-16", description: "Transfer In", details: "MR STANISLAUS SA", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 77, date: "2025-05-17", description: "Online Banking Transfer", details: "Kamuzu Barracks vs Ekhaya FC", accountCode: "EFC101-5002", amount: 143000, type: "credit" },
-  { id: 78, date: "2025-05-19", description: "Transfer In", details: "DANIEL CHILIMA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 79, date: "2025-05-19", description: "Cash Deposit", details: "JENNIFER CHAPOTERA", accountCode: "EFC101-5002", amount: 208500, type: "credit" },
-  { id: 80, date: "2025-05-19", description: "Cash Deposit", details: "BLESSINGS", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 81, date: "2025-05-20", description: "Online Banking Transfer", details: "Nazil Jerseys", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 82, date: "2025-05-20", description: "Transfer In", details: "ROMEO", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 83, date: "2025-05-21", description: "Transfer In", details: "MPHATSO ZANGALAM", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 84, date: "2025-05-21", description: "Transfer In", details: "From Acc.No. MWK1472000190001", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 85, date: "2025-05-22", description: "Cash Deposit", details: "GATE COLLECTION BY G MANDOWA", accountCode: "EFC101-5002", amount: 418000, type: "credit" },
-  { id: 86, date: "2025-05-22", description: "Mobile Banking Transfer", details: "From: CHIPUNGU ALEX KENNIE", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 87, date: "2025-05-22", description: "Online Banking Transfer", details: "Sponsorship Ekhaya FC Mibawa", accountCode: "EFC101-5005", amount: 1500000, type: "credit" },
-  { id: 88, date: "2025-05-23", description: "Online Banking Transfer", details: "Funds Transfer for salaries", accountCode: "", amount: 16000000, type: "debit" },
-  { id: 89, date: "2025-05-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 163000, type: "debit" },
-  { id: 90, date: "2025-05-30", description: "Transfer In", details: "HAMISI TADALA", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 91, date: "2025-05-30", description: "Transfer In", details: "GAZA INVESTMENTS", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 92, date: "2025-05-30", description: "Transfer In", details: "CHIMENYA ANTHONY", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 93, date: "2025-05-30", description: "Transfer In", details: "MR JEFFREY LIMBI", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 94, date: "2025-05-30", description: "Online Banking Transfer", details: "Jersey", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 95, date: "2025-05-31", description: "Transfer In", details: "From Acc.No. MWK1472000190001", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 96, date: "2025-06-02", description: "Transfer In", details: "TIKHALA S MBEDZA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 97, date: "2025-06-02", description: "Cash Deposit", details: "JENNIFER CHAPOTERA", accountCode: "EFC101-5002", amount: 48000, type: "credit" },
-  { id: 98, date: "2025-06-04", description: "Mobile Banking Transfer", details: "From: MATHEWS MTIMAUKANENA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 99, date: "2025-06-04", description: "Online Banking Transfer", details: "TP Mpinganjira Shirts", accountCode: "EFC101-5003", amount: 660000, type: "credit" },
-  { id: 100, date: "2025-06-05", description: "Transfer In", details: "SUPER LEAGUE ASS", accountCode: "EFC101-5002", amount: 270000, type: "credit" },
-  { id: 101, date: "2025-06-05", description: "Cash Deposit", details: "G MKOMADZINJA", accountCode: "EFC101-5002", amount: 750000, type: "credit" },
-  { id: 102, date: "2025-06-06", description: "Mobile Banking Transfer", details: "From: LIMBANI LUNDU", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 103, date: "2025-06-10", description: "Transfer In", details: "MS RUTH SHUMBA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 104, date: "2025-06-10", description: "Transfer In", details: "MS RUTH SHUMBA", accountCode: "EFC101-5003", amount: 0, type: "credit" },
-  { id: 105, date: "2025-06-10", description: "Transfer In", details: "MS RUTH SHUMBA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 106, date: "2025-06-10", description: "Transfer In", details: "PANGANI EVANCE", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 107, date: "2025-06-11", description: "EFT Incoming", details: "MISS PATRICIA NANKHU", accountCode: "EFC101-5003", amount: 180000, type: "credit" },
-  { id: 108, date: "2025-06-13", description: "Transfer In", details: "MRS ELIZABETH BL", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 109, date: "2025-06-13", description: "Mobile Banking Transfer", details: "From: BERSON SENZANI", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 110, date: "2025-06-13", description: "Cash Deposit", details: "BLESSINGS", accountCode: "EFC101-5003", amount: 1337000, type: "credit" },
-  { id: 111, date: "2025-06-16", description: "Cash Deposit", details: "EKHAYA VS CLERK", accountCode: "EFC101-5002", amount: 51770, type: "credit" },
-  { id: 112, date: "2025-06-17", description: "Transfer In", details: "MALIRAKWENDA RIC", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 113, date: "2025-06-17", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 60000, type: "credit" },
-  { id: 114, date: "2025-06-17", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 115, date: "2025-06-17", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 116, date: "2025-06-17", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 117, date: "2025-06-17", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 1800000, type: "credit" },
-  { id: 118, date: "2025-06-17", description: "Mobile Banking Transfer", details: "From: JACOB MWAKAJUMBA", accountCode: "EFC101-5003", amount: 180000, type: "credit" },
-  { id: 119, date: "2025-06-18", description: "Oneclick Bulk Payment", details: "2025 Club Subventions - Ekhaya FC", accountCode: "EFC101-5004", amount: 4500000, type: "credit" },
-  { id: 120, date: "2025-06-23", description: "Cash Deposit", details: "ISAAC", accountCode: "EFC101-5002", amount: 249700, type: "credit" },
-  { id: 121, date: "2025-06-25", description: "Online Banking Transfer", details: "Funds Transfer for salaries", accountCode: "", amount: 11000000, type: "debit" },
-  { id: 122, date: "2025-06-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 163000, type: "debit" },
-  { id: 123, date: "2025-06-27", description: "Transfer In", details: "PRISCILLA CHIPPO", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 124, date: "2025-06-28", description: "Mobile Banking Transfer", details: "From: ALLAN SABWERA", accountCode: "EFC101-5003", amount: 300000, type: "credit" },
-  { id: 125, date: "2025-06-28", description: "Transfer In", details: "MUSTAFA GEOFFREY", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 126, date: "2025-06-30", description: "Cash Deposit", details: "ISHMAEL", accountCode: "EFC101-5002", amount: 1164064, type: "credit" },
-  { id: 127, date: "2025-07-01", description: "Mobile Banking Transfer", details: "From: GEORGE FRANK", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 128, date: "2025-07-02", description: "Mobile Banking Transfer", details: "From: YAMIKANI NOEL NYIRENDA", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 129, date: "2025-07-02", description: "Mobile Banking Transfer", details: "From: YAMIKANI NOEL NYIRENDA", accountCode: "EFC101-5003", amount: 1080000, type: "credit" },
-  { id: 130, date: "2025-07-02", description: "Transfer In", details: "DUNCAN FRANK MAB", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 131, date: "2025-07-02", description: "Mobile Banking Transfer", details: "From: PEMPHO MUSSA MAKINA", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 132, date: "2025-07-03", description: "Cash Deposit", details: "EKHAYA VS BULLETS IDAH CHANZA", accountCode: "EFC101-5002", amount: 672780, type: "credit" },
-  { id: 133, date: "2025-07-03", description: "Transfer In", details: "SHINGIRAI MBENDE", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 134, date: "2025-07-03", description: "Transfer In", details: "TYRE XPRESS TYRE", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 135, date: "2025-07-04", description: "Online Banking Transfer", details: "Transfer Operations Account", accountCode: "", amount: 6000000, type: "debit" },
-  { id: 136, date: "2025-07-04", description: "Online Banking Transfer", details: "Transfer to Salaries Account", accountCode: "", amount: 20000000, type: "debit" },
-  { id: 137, date: "2025-07-04", description: "Cash Deposit", details: "BLESSINGS FOR REPLICA JERSEY", accountCode: "EFC101-5003", amount: 1130000, type: "credit" },
-  { id: 138, date: "2025-07-04", description: "Oneclick Bulk Payment", details: "Contribution For Ekhaya Football", accountCode: "EFC101-5005", amount: 1500000, type: "credit" },
-  { id: 139, date: "2025-07-04", description: "Transfer In", details: "NYAMBALO ANDREW", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 140, date: "2025-07-04", description: "Cash Deposit", details: "GILBERT MSINDA", accountCode: "EFC101-5003", amount: 450000, type: "credit" },
-  { id: 141, date: "2025-07-04", description: "Mobile Banking Transfer", details: "From: AUBREY NYIRONGO", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 142, date: "2025-07-05", description: "Transfer", details: "Motor Vehicle maintenance", accountCode: "EFC101-5003", amount: 471961, type: "credit" },
-  { id: 143, date: "2025-07-08", description: "Mobile Banking Transfer", details: "From: RONALD CHIMCHERE", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 144, date: "2025-07-10", description: "Mobile Banking Transfer", details: "From: ANTHONY BLAZIO MASAMBA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 145, date: "2025-07-10", description: "Mobile Banking Transfer", details: "From: STELLA MSOSA", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 146, date: "2025-07-10", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 4500000, type: "credit" },
-  { id: 147, date: "2025-07-10", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 148, date: "2025-07-10", description: "Transfer In", details: "MANDIZA JAMES K", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 149, date: "2025-07-11", description: "Transfer In", details: "MR TALUMBA NAMAT", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 150, date: "2025-07-11", description: "Transfer In", details: "BRIDGET KALIMANJ", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 151, date: "2025-07-11", description: "Transfer In", details: "MR ANDREW MALISE", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 152, date: "2025-07-11", description: "Transfer In", details: "THEODORE MWAYI K", accountCode: "EFC101-5003", amount: 216000, type: "credit" },
-  { id: 153, date: "2025-07-14", description: "Cash Deposit", details: "EKHAYA VS WANDERERS GREGORY MANDOWA", accountCode: "EFC101-5002", amount: 1049285, type: "credit" },
-  { id: 154, date: "2025-07-14", description: "Cash Deposit", details: "MONEY FOR REPLICA JERSEY", accountCode: "EFC101-5003", amount: 453000, type: "credit" },
-  { id: 155, date: "2025-07-15", description: "Online Banking Transfer", details: "Transfer to Operations Account", accountCode: "", amount: 0, type: "debit" },
-  { id: 156, date: "2025-07-16", description: "Online Banking Transfer", details: "Club President Replicas", accountCode: "EFC101-5003", amount: 396000, type: "credit" },
-  { id: 157, date: "2025-07-16", description: "Online Banking Transfer", details: "Kumbu Jimusole Replica", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 158, date: "2025-07-16", description: "Mobile Banking Transfer", details: "From: STELLA RAXIE KAMWANA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 159, date: "2025-07-17", description: "Online Banking Transfer", details: "Ekhaya FC Zomba Hardelec", accountCode: "EFC101-5005", amount: 3000000, type: "credit" },
-  { id: 160, date: "2025-07-17", description: "Online Banking Transfer", details: "Ekhaya FC Northgate Mibawa", accountCode: "EFC101-5005", amount: 4500000, type: "credit" },
-  { id: 161, date: "2025-07-18", description: "Transfer In", details: "From Acc.No. 1970100076147", accountCode: "EFC101-5003", amount: 108000, type: "credit" },
-  { id: 162, date: "2025-07-18", description: "Mobile Banking Transfer", details: "From: LUSEKELO DAVID MWALWANDA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 163, date: "2025-07-19", description: "Online Banking Transfer", details: "Ekhaya FC Resort", accountCode: "EFC101-5005", amount: 2000000, type: "credit" },
-  { id: 164, date: "2025-07-19", description: "Online Banking Transfer", details: "EFC101-5002", accountCode: "EFC101-5002", amount: 14000000, type: "credit" },
-  { id: 165, date: "2025-07-19", description: "Online Banking Transfer", details: "EFC101-5002", accountCode: "EFC101-5002", amount: 267950, type: "credit" },
-  { id: 166, date: "2025-07-21", description: "Cash Deposit", details: "EKHAYA VS MOYALE GREGORY MANDOWA", accountCode: "EFC101-5002", amount: 1049285, type: "credit" },
-  { id: 167, date: "2025-07-21", description: "Online Banking Transfer", details: "Ekhaya FC Mibawa", accountCode: "EFC101-5005", amount: 1500000, type: "credit" },
-  { id: 168, date: "2025-07-22", description: "Transfer In", details: "LIKWEMBA LOUIS", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 169, date: "2025-07-22", description: "Mobile Banking Transfer", details: "From: ADAM MBETA", accountCode: "EFC101-5003", amount: 760000, type: "credit" },
-  { id: 170, date: "2025-07-24", description: "Online Banking Transfer", details: "Transfer to Salaries AC", accountCode: "", amount: 0, type: "debit" },
-  { id: 171, date: "2025-07-24", description: "Online Banking Transfer", details: "Ekhaya FC Mangochi", accountCode: "EFC101-5005", amount: 1500000, type: "credit" },
-  { id: 172, date: "2025-07-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 191000, type: "debit" },
-  { id: 173, date: "2025-07-29", description: "Transfer In", details: "AKUZIKE KUNYUMBU", accountCode: "EFC101-5003", amount: 108000, type: "credit" },
-  { id: 174, date: "2025-07-30", description: "Cash Deposit", details: "MIKE LEMEKANI", accountCode: "EFC101-5002", amount: 1431000, type: "credit" },
-  { id: 175, date: "2025-07-30", description: "EFT Incoming", details: "EDEN FARMS", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 176, date: "2025-07-31", description: "Transfer In", details: "MR HARRY SAMBANI", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 177, date: "2025-07-31", description: "Transfer In", details: "MACDONALD MTUWA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 178, date: "2025-08-01", description: "Online Banking Transfer", details: "Transfer to Operations Account", accountCode: "", amount: 0, type: "debit" },
-  { id: 179, date: "2025-08-04", description: "Transfer In", details: "LIMBANI CHAKHOMA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 180, date: "2025-08-04", description: "Mobile Banking Transfer", details: "From: ALICK LUNGU", accountCode: "EFC101-5003", amount: 367500, type: "credit" },
-  { id: 181, date: "2025-08-05", description: "Oneclick Bulk Payment", details: "Contribution For EKHAYA FOOTBALL", accountCode: "EFC101-5005", amount: 1500000, type: "credit" },
-  { id: 182, date: "2025-08-06", description: "EFT Incoming", details: "CIVIL SERVICE UNITED", accountCode: "EFC101-5005", amount: 4500000, type: "credit" },
-  { id: 183, date: "2025-08-06", description: "Transfer In", details: "INESS CHIKAFA", accountCode: "EFC101-5005", amount: 12000000, type: "credit" },
-  { id: 184, date: "2025-08-06", description: "Transfer", details: "Reversal Wrong Account Deposit", accountCode: "", amount: 16300, type: "debit" },
-  { id: 185, date: "2025-08-08", description: "Cash Deposit", details: "AMON CHIRWA", accountCode: "EFC101-5003", amount: 4000000, type: "credit" },
-  { id: 186, date: "2025-08-08", description: "Transfer In", details: "SHIFT COMPANY LTD", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 187, date: "2025-08-09", description: "Transfer In", details: "MR CHIMWEMWE JUW", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 188, date: "2025-08-11", description: "Transfer In", details: "MISS WINNIE MALE", accountCode: "EFC101-5003", amount: 170000, type: "credit" },
-  { id: 189, date: "2025-08-11", description: "Cash Deposit", details: "CIVIL VS WANDERERS MIKE", accountCode: "EFC101-5002", amount: 1000000, type: "credit" },
-  { id: 190, date: "2025-08-13", description: "Transfer In", details: "MBAYA MORRIS MAT", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 191, date: "2025-08-14", description: "Transfer In", details: "RONALD ZELEZA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 192, date: "2025-08-14", description: "EFT Incoming", details: "MISS PRISCA NJONJO K", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 193, date: "2025-08-15", description: "Online Banking Transfer", details: "Transfer to Operations Account", accountCode: "", amount: 0, type: "debit" },
-  { id: 194, date: "2025-08-18", description: "Transfer In", details: "BLESSINGS KAPHIK", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 195, date: "2025-08-19", description: "Cash Deposit", details: "JK", accountCode: "EFC101-5002", amount: 830000, type: "credit" },
-  { id: 196, date: "2025-08-19", description: "Mobile Banking Transfer", details: "From: EMMANUEL VINCENT NANTHURU", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 197, date: "2025-08-19", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 450000, type: "credit" },
-  { id: 198, date: "2025-08-19", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 4000000, type: "credit" },
-  { id: 199, date: "2025-08-25", description: "Online Banking Transfer", details: "EFC101-5002", accountCode: "EFC101-5002", amount: 297500, type: "credit" },
-  { id: 200, date: "2025-08-25", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 201, date: "2025-08-25", description: "Mobile Banking Transfer", details: "From: PEMPHO MUSSA MAKINA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 202, date: "2025-08-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 16300, type: "debit" },
-  { id: 203, date: "2025-08-28", description: "Cash Deposit", details: "GREGORY MANDOWA", accountCode: "EFC101-5002", amount: 3000000, type: "credit" },
-  { id: 204, date: "2025-08-28", description: "Mobile Banking Transfer", details: "From: FRANCIS MKONDA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 205, date: "2025-08-29", description: "Cash Deposit", details: "JENNIFER CHAPOTERA", accountCode: "EFC101-5002", amount: 530000, type: "credit" },
-  { id: 206, date: "2025-09-01", description: "Mobile Banking Transfer", details: "From: UPILE CHIWAYA", accountCode: "EFC101-5003", amount: 300000, type: "credit" },
-  { id: 207, date: "2025-09-02", description: "Online Banking Transfer", details: "President Inv 049", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 208, date: "2025-09-02", description: "Online Banking Transfer", details: "President Inv 015", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 209, date: "2025-09-02", description: "Online Banking Transfer", details: "President Inv 008", accountCode: "EFC101-5003", amount: 180000, type: "credit" },
-  { id: 210, date: "2025-09-02", description: "Online Banking Transfer", details: "President Inv 010", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 211, date: "2025-09-02", description: "Online Banking Transfer", details: "President Inv 011", accountCode: "EFC101-5003", amount: 120000, type: "credit" },
-  { id: 212, date: "2025-09-02", description: "Agent Deposit", details: "AGENT CASH DEPOSIT", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 213, date: "2025-09-02", description: "Online Banking Transfer", details: "President Invoice 047", accountCode: "EFC101-5003", amount: 180000, type: "credit" },
-  { id: 214, date: "2025-09-04", description: "Agent Deposit", details: "AGENT CASH DEPOSIT", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 215, date: "2025-09-05", description: "Mobile Banking Transfer", details: "KMtambo Replicas", accountCode: "EFC101-5003", amount: 0, type: "credit" },
-  { id: 216, date: "2025-09-05", description: "Oneclick Bulk Payment", details: "replica jerseys - Ekhaya Football", accountCode: "EFC101-5003", amount: 10000000, type: "credit" },
-  { id: 217, date: "2025-09-06", description: "Cash Deposit", details: "HARRY MSISKA", accountCode: "EFC101-5007", amount: 720000, type: "credit" },
-  { id: 218, date: "2025-09-09", description: "Transfer In", details: "PHIRI LINDANI WE", accountCode: "EFC101-5007", amount: 2693157, type: "credit" },
-  { id: 219, date: "2025-09-09", description: "Mobile Banking Transfer", details: "From: CHIMWEMWE NKUNIKA", accountCode: "EFC101-5003", amount: 350000, type: "credit" },
-  { id: 220, date: "2025-09-10", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 144000, type: "credit" },
-  { id: 221, date: "2025-09-11", description: "Transfer", details: "Redirection of a cash deposit to FA", accountCode: "", amount: 4962680, type: "debit" },
-  { id: 222, date: "2025-09-12", description: "Transfer In", details: "ROBINS GONDWE", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 223, date: "2025-09-12", description: "Online Banking Transfer", details: "President Inv 053", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 224, date: "2025-09-12", description: "Online Banking Transfer", details: "President Inv 054", accountCode: "EFC101-5003", amount: 144000, type: "credit" },
-  { id: 225, date: "2025-09-13", description: "Online Banking Transfer", details: "Funds Transfer from Revenue AC to", accountCode: "", amount: 16000000, type: "debit" },
-  { id: 226, date: "2025-09-17", description: "Transfer In", details: "MISS MIRRIAM RED", accountCode: "EFC101-5003", amount: 36500, type: "credit" },
-  { id: 227, date: "2025-09-20", description: "Transfer In", details: "From Acc.No. 1040100794395", accountCode: "EFC101-5003", amount: 36500, type: "credit" },
-  { id: 228, date: "2025-09-22", description: "Transfer In", details: "MR THANDO KASOM", accountCode: "EFC101-5003", amount: 54000, type: "credit" },
-  { id: 229, date: "2025-09-24", description: "Transfer In", details: "From Acc.No. 1040100794395", accountCode: "EFC101-5003", amount: 108000, type: "credit" },
-  { id: 230, date: "2025-09-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 163000, type: "debit" },
-  { id: 231, date: "2025-09-26", description: "Mobile Banking Transfer", details: "From: CHIMWEMWE NKUNIKA", accountCode: "EFC101-5003", amount: 68400, type: "credit" },
-  { id: 232, date: "2025-09-29", description: "Online Banking Transfer", details: "Ekhaya Jerseys", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 233, date: "2025-09-29", description: "Transfer In", details: "CHIPEYA BERNARD", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 234, date: "2025-09-29", description: "Cash Deposit", details: "ISHMAEL", accountCode: "EFC101-5003", amount: 2064000, type: "credit" },
-  { id: 235, date: "2025-09-30", description: "Cash Deposit", details: "BLESSINGS GWEMBELE", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 236, date: "2025-10-06", description: "Mobile Banking Transfer", details: "From: STELLA RAXIE KAMWANA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 237, date: "2025-10-07", description: "Transfer In", details: "KANYENGE HANNA M", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 238, date: "2025-10-07", description: "EFT Incoming", details: "SUPER LEAGUE", accountCode: "EFC101-5006", amount: 5140603, type: "credit" },
-  { id: 239, date: "2025-10-10", description: "Transfer In", details: "VANESSA UPILE KA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 240, date: "2025-10-10", description: "Mobile Banking Transfer", details: "From: SEBASTIAN KAMPEREWARA", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 241, date: "2025-10-14", description: "Mobile Banking Transfer", details: "From: CHIMWEMWE NKUNIKA", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 242, date: "2025-10-16", description: "Online Banking Transfer", details: "Funds Transfer from Revenue AC to", accountCode: "", amount: 16300, type: "debit" },
-  { id: 243, date: "2025-10-16", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 244, date: "2025-10-17", description: "Transfer In", details: "MR AMMON CHIRWA", accountCode: "EFC101-5003", amount: 648000, type: "credit" },
-  { id: 245, date: "2025-10-18", description: "Mobile Banking Transfer", details: "From: CHIMWEMWE NKUNIKA", accountCode: "EFC101-5003", amount: 216000, type: "credit" },
-  { id: 246, date: "2025-10-22", description: "EFT Incoming", details: "HENDERSON MKANDAWIRE", accountCode: "EFC101-5003", amount: 600000, type: "credit" },
-  { id: 247, date: "2025-10-22", description: "Online Banking Transfer", details: "Funds Transfer to Salaries Account", accountCode: "", amount: 0, type: "debit" },
-  { id: 248, date: "2025-10-23", description: "Cash Deposit", details: "GREGORY MANDOWA", accountCode: "EFC101-5002", amount: 187000, type: "credit" },
-  { id: 249, date: "2025-10-24", description: "Transfer In", details: "MR AMMON CHIRWA", accountCode: "EFC101-5003", amount: 432000, type: "credit" },
-  { id: 250, date: "2025-10-24", description: "Oneclick Bulk Payment", details: "June 2025 Jersey-Loan Recoveries", accountCode: "EFC101-5003", amount: 1380000, type: "credit" },
-  { id: 251, date: "2025-10-24", description: "Oneclick Bulk Payment", details: "Sept 2025 Jersey-Loan Recoveries", accountCode: "EFC101-5003", amount: 1440000, type: "credit" },
-  { id: 252, date: "2025-10-24", description: "Oneclick Bulk Payment", details: "June 2025 Jersey-Loan Recoveries", accountCode: "EFC101-5003", amount: 1380000, type: "credit" },
-  { id: 253, date: "2025-10-24", description: "Oneclick Bulk Payment", details: "Aug 2025 Jersey", accountCode: "EFC101-5003", amount: 3492000, type: "credit" },
-  { id: 254, date: "2025-10-24", description: "Oneclick Bulk Payment", details: "Oct 2025 Jersey", accountCode: "EFC101-5003", amount: 654000, type: "credit" },
-  { id: 255, date: "2025-10-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 163000, type: "debit" },
-  { id: 256, date: "2025-10-28", description: "Cash Deposit", details: "EKHAYA VS BLUE EAGLES G MANDOWA", accountCode: "EFC101-5002", amount: 977000, type: "credit" },
-  { id: 257, date: "2025-11-01", description: "Transfer In", details: "TMUSKAMBO", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 258, date: "2025-11-03", description: "EFT Incoming", details: "SUPER LEAGUE ASSOCIATION", accountCode: "EFC101-5006", amount: 4500000, type: "credit" },
-  { id: 259, date: "2025-11-03", description: "Transfer In", details: "SUPER LEAGUE ASS", accountCode: "EFC101-5002", amount: 30000000, type: "credit" },
-  { id: 260, date: "2025-11-03", description: "Online Banking Transfer", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 16300, type: "credit" },
-  { id: 261, date: "2025-11-04", description: "Online Banking Transfer", details: "Funds Transfer from Revenue AC to", accountCode: "", amount: 16000000, type: "debit" },
-  { id: 262, date: "2025-11-05", description: "Mobile Banking Transfer", details: "From: KAKHOBWE MAYAMIKO", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 263, date: "2025-11-10", description: "Transfer In", details: "ISAAC", accountCode: "EFC101-5003", amount: 180000, type: "credit" },
-  { id: 264, date: "2025-11-13", description: "Transfer In", details: "JERSEY SALES", accountCode: "EFC101-5003", amount: 165000, type: "credit" },
-  { id: 265, date: "2025-11-13", description: "Transfer In", details: "Cash Deposit JERSEY SALES", accountCode: "EFC101-5003", amount: 1152000, type: "credit" },
-  { id: 266, date: "2025-11-18", description: "Oneclick Bulk Payment", details: "Ekhaya FC 071", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 267, date: "2025-11-19", description: "Transfer In", details: "From Acc.No. MWK1472000190001", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 268, date: "2025-11-21", description: "Transfer In", details: "MR WEBSTER PRINC", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 269, date: "2025-11-21", description: "Transfer In", details: "MR KENNEDY NKHAW", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 270, date: "2025-11-22", description: "Agent Deposit", details: "AGENT CASH DEPOSIT", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 271, date: "2025-11-22", description: "Mobile Banking Transfer", details: "From: JUSTIN NKANDO", accountCode: "EFC101-5003", amount: 350000, type: "credit" },
-  { id: 272, date: "2025-11-24", description: "Transfer In", details: "MR KELVIN MALING", accountCode: "EFC101-5003", amount: 360000, type: "credit" },
-  { id: 273, date: "2025-11-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 0, type: "debit" },
-  { id: 274, date: "2025-11-27", description: "Oneclick Bulk Payment", details: "Nov 2025 Jersey-Loan Recoveries", accountCode: "EFC101-5003", amount: 1404000, type: "credit" },
-  { id: 275, date: "2025-11-28", description: "Cash Deposit", details: "JERSEY SALES BY BRIGHT NYAUTI", accountCode: "EFC101-5003", amount: 864000, type: "credit" },
-  { id: 276, date: "2025-12-01", description: "Mobile Banking Transfer", details: "From: FRANCIS PATRICK MACLAY MADONA", accountCode: "EFC101-5003", amount: 700000, type: "credit" },
-  { id: 277, date: "2025-12-02", description: "Cash Deposit", details: "SAM BANDA", accountCode: "EFC101-5002", amount: 825750, type: "credit" },
-  { id: 278, date: "2025-12-03", description: "Online Banking Transfer", details: "Nandos Replica Inv 080", accountCode: "EFC101-5003", amount: 9500000, type: "credit" },
-  { id: 279, date: "2025-12-03", description: "Online Banking Transfer", details: "Chileka Replica Inv 079", accountCode: "EFC101-5003", amount: 4400000, type: "credit" },
-  { id: 280, date: "2025-12-05", description: "Cash Deposit", details: "EFC101-5003", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 281, date: "2025-12-08", description: "Mobile Banking Transfer", details: "From: YAMIKANI NOEL NYIRENDA", accountCode: "EFC101-5003", amount: 2373055, type: "credit" },
-  { id: 282, date: "2025-12-08", description: "Cash Deposit", details: "MPHATSO KASIYA", accountCode: "EFC101-5003", amount: 0, type: "credit" },
-  { id: 283, date: "2025-12-09", description: "Online Banking Transfer", details: "Funds Transfer from Revenue AC to", accountCode: "", amount: 0, type: "debit" },
-  { id: 284, date: "2025-12-11", description: "Cash Deposit", details: "EKHAYA vs SILVER", accountCode: "EFC101-5002", amount: 250000, type: "credit" },
-  { id: 285, date: "2025-12-15", description: "Transfer In", details: "MS WONGANI NKHOM", accountCode: "EFC101-5003", amount: 200000, type: "credit" },
-  { id: 286, date: "2025-12-16", description: "Cash Deposit", details: "GREGORY MANDOWA", accountCode: "EFC101-5002", amount: 1708000, type: "credit" },
-  { id: 287, date: "2025-12-16", description: "Transfer In", details: "SUPER LEAGUE ASS", accountCode: "EFC101-5004", amount: 45000000, type: "credit" },
-  { id: 288, date: "2025-12-18", description: "Transfer In", details: "SUPER LEAGUE ASS", accountCode: "EFC101-5004", amount: 50000000, type: "credit" },
-  { id: 289, date: "2025-12-18", description: "Transfer In", details: "SUPER LEAGUE ASS", accountCode: "EFC101-5006", amount: 127387, type: "credit" },
-  { id: 290, date: "2025-12-19", description: "Transfer In", details: "DAVID CHIYEMBEKE", accountCode: "EFC101-5003", amount: 720000, type: "credit" },
-  { id: 291, date: "2025-12-22", description: "Online Banking Transfer", details: "Funds Transfer from Revenue AC to", accountCode: "", amount: 0, type: "debit" },
-  { id: 292, date: "2025-12-22", description: "Mobile Banking Transfer", details: "From: DANIEL KAZIMA", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 293, date: "2025-12-24", description: "Oneclick Bulk Payment", details: "Staff Loan Recoveries", accountCode: "EFC101-5003", amount: 1176000, type: "credit" },
-  { id: 294, date: "2025-12-24", description: "Oneclick Bulk Payment", details: "Dec 2025 Jersey", accountCode: "EFC101-5003", amount: 0, type: "credit" },
-  { id: 295, date: "2025-12-26", description: "Fees Debited", details: "Bank Charges", accountCode: "", amount: 960000, type: "debit" },
-  { id: 296, date: "2025-12-27", description: "Mobile Banking Transfer", details: "From: DAMSON MADALITSO SULUMA", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 297, date: "2025-12-27", description: "Mobile Banking Transfer", details: "From: JIMMY TAULO", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 298, date: "2025-12-27", description: "Mobile Banking Transfer", details: "From: ISHMAEL MANGANI", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 299, date: "2025-12-29", description: "Transfer In", details: "PATRICK MKONDA", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 300, date: "2025-12-29", description: "Transfer In", details: "CHIPEYA BERNARD", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 301, date: "2025-12-29", description: "Transfer In", details: "JARDON SAM THEU", accountCode: "EFC101-5003", amount: 960000, type: "credit" },
-  { id: 302, date: "2025-12-29", description: "Transfer In", details: "CHIPEYA BERNARD", accountCode: "EFC101-5003", amount: 240000, type: "credit" },
-  { id: 303, date: "2025-12-29", description: "Mobile Banking Transfer", details: "From: KONDWANI MAURICE CHAPOLA", accountCode: "EFC101-5003", amount: 480000, type: "credit" },
-  { id: 304, date: "2025-12-31", description: "Transfer", details: "Dec 25 Payroll Remittances Reversal", accountCode: "", amount: 5306910, type: "debit" },
-  { id: 305, date: "2025-12-31", description: "Transfer In", details: "SUPER LEAGUE ASS", accountCode: "EFC101-5006", amount: 7433, type: "credit" },
+const EXPENSE_TYPE_MAP = {
+  "1000": "International Transfers",
+  "2102": "Training & Per Diem",
+  "2103": "Camping",
+  "2104": "Travel",
+  "2105": "Travel & Meal Allowances",
+  "2201": "Air Tickets",
+  "2202": "Visa & Travel Docs",
+  "2205": "Accommodation",
+  "2301": "Utilities (ESCOM)",
+  "2305": "Water Bills",
+  "2306": "Internet & Airtime",
+  "2402": "Logistics & Support",
+  "2406": "Design & Branding",
+  "2407": "Office Supplies",
+  "2408": "Kits & Equipment",
+  "2410": "Security Services",
+  "2411": "Events & Ceremonies",
+  "2420": "Media & Communications",
+  "2501": "Medical Supplies",
+  "2511": "Medical Aid (MASM)",
+  "2517": "Medical Tests & Scans",
+  "2601": "Office Rentals",
+  "2603": "House Rentals",
+  "2650": "Ground Rent",
+  "2803": "Training & Development",
+  "2819": "Monthly Training Allowance",
+  "2902": "HR Retainer Fees",
+  "2923": "IT & Web Maintenance",
+  "3201": "Hostel Supplies (Food/Hygiene)",
+  "3305": "Bank Charges & EFT Fees",
+  "3353": "DSTV & Subscriptions",
+  "3401": "Fuel",
+  "3402": "Vehicle Licensing & COF",
+  "3512": "Vehicle Maintenance",
+  "3519": "Miscellaneous Expenses",
+  "3901": "FIFA/FAM Fees",
+  "4115": "Equipment Purchase",
+  "4199": "Player Acquisition",
+  "4685": "Bonuses & Rewards",
+};
+
+const RAW_CASHBOOK = [
+  ["2026-01-01", "Online Banking Transfer | Ekhaya FC Budget", "Ekhaya FC Budget", "—", 15000000, 0],
+  ["2026-01-01", "Online Banking Transfer | Funds Transfer from Revenue AC to", "Funds Transfer from Revenue AC to", "—", 4000000, 0],
+  ["2026-01-01", "Mens Team Squad | Mens Team Travel Allowance BLK Trip", "EFC208-2104", "531196", 0, 940000],
+  ["2026-01-01", "Up Town Lodge | Mens Team Accommodation Castel Cup Away in BLK", "EFC208-2205", "531125-1", 0, 1446292.5],
+  ["2026-01-01", "Thando Mhango | CEO Travel Allowance Castel Cup Away in BLK", "EFC208-2105", "531125-2", 0, 100000],
+  ["2026-01-01", "Mphatso Mpinganjira | Chairman Travel Allowance Castel Cup Away in BLK", "EFC208-2105", "531125-3", 0, 100000],
+  ["2026-01-01", "EFC Supporters Committee | Travel Support Castel Cup Away in BLK", "EFC208-2102", "531125-4", 0, 500000],
+  ["2026-01-01", "TotalEnergies Malawi | Fuel for Castel Cup trip for CEO & Chairman", "EFC208-3401", "531125-5", 0, 889327.46],
+  ["2026-01-01", "Mens Team | Cowboys TPT 1 to 31 December 2025", "EFC202-2102", "531141", 0, 2765000],
+  ["2026-01-01", "Transfer | Staff Fuel Allocations for January 2026", "EFC102-3401", "531217", 0, 2120000],
+  ["2026-01-01", "Enos Chatama | Mens Coach Training Allowance for December 2025", "EFC202-2102", "531217", 0, 600000],
+  ["2026-01-01", "Patricia Makwakwa | Training Allowance for December 2025", "EFC302-2102", "531217", 0, 150000],
+  ["2026-01-01", "Alick Lungu | Training Allowance for December 2025", "EFC202-2102", "531217", 0, 150000],
+  ["2026-01-01", "Mens Team Squad | Win n Clean Sheet Bonus vs Tigers TNM League", "EFC203-4685", "531219", 0, 3075000],
+  ["2026-01-01", "Reserve Team Players | Reserve Team TPT 1 to 10 Jan 2026", "EFC402-2102", "531486", 0, 525500],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Secretariat", "EFC103-2511", "531508", 0, 609000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Mens Team", "EFC215-2511", "531508", 0, 2058000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Womens Team", "EFC315-2511", "531508", 0, 1075000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Reserve Team", "EFC415-2511", "531508", 0, 597000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Youth", "EFC515-2511", "531508", 0, 448000],
+  ["2026-01-01", "Mobile Banking Transfer | From: WILLIAM MPINGANJIRA", "From: WILLIAM MPINGANJIRA", "—", 1000000, 0],
+  ["2026-01-01", "Thando Mhango | Travel Allow CEO Lilongwe Official Trip", "EFC105-2104", "531858-1", 0, 280000],
+  ["2026-01-01", "Target Travels & Tours | Air Ticket for CEO Lilongwe Official Trip", "EFC105-2201", "531858-2", 0, 424000],
+  ["2026-01-01", "DSTV Malawi (Blessings) | DSTV Subscription for Cowboys Hostel (Jan-Mar 2026)", "EFC214-3353", "531692-1", 0, 270000],
+  ["2026-01-01", "ESCOM (Blessings) | ESCOM Power Units for Cowboys Hostel Jan 2026", "EFC214-2301", "531692-2", 0, 100000],
+  ["2026-01-01", "ESCOM (Blessings) | ESCOM Power Units for Cowgirls Hostel Jan 2026", "EFC314-2301", "531692-3", 0, 100000],
+  ["2026-01-01", "Blantyre Water Board(Blessings) | Water Bill at Cowgirls Hostel for Nov 2025", "EFC314-2305", "531692-4", 0, 221444],
+  ["2026-01-01", "Blantyre Water Board(Blessings) | Water Bill at Cowboys Hostel for Nov 2025", "EFC214-2305", "531692-5", 0, 139076],
+  ["2026-01-01", "Smile Lodge | Accommodation for CEO", "EFC105-2205", "532409", 0, 100000],
+  ["2026-01-01", "Online Banking Transfer | Ekhaya FC Ops", "Ekhaya FC Ops", "—", 7000000, 0],
+  ["2026-01-01", "Thando Mhango | CEO Manager Mzuzu Scouting Trip", "EFC213-2104", "532949-1", 0, 380000],
+  ["2026-01-01", "Francis Khan | Team Manager Mzuzu Scouting Trip", "EFC213-2104", "532949-2", 0, 210000],
+  ["2026-01-01", "Chifundo Bonga | Driver Mzuzu Scouting Trip", "EFC213-2104", "532949-3", 0, 160000],
+  ["2026-01-01", "TotalEnergies Malawi | Fuel for Mzuzu Scouting Trip", "EFC213-3401", "532949-4", 0, 767025],
+  ["2026-01-01", "Tech Ideas | Website support Maintenance & SEO Jan-Mar 2026", "EFC108-2923", "533364-1", 0, 1860000],
+  ["2026-01-01", "Studio Ignite | Design & Printing of Business cards for CEO plus email signature", "EFC108-2406", "533364-2", 0, 366200],
+  ["2026-01-01", "Ravisha Rehab | MRI Scan for two Main Team Players", "EFC215-2517", "533629", 0, 800000],
+  ["2026-01-01", "Shugo Electrical & Electronics | EFC 1 Aircon Gas Refilling", "EFC216-3512", "533897", 0, 700000],
+  ["2026-01-01", "Online Banking Transfer | Ekhaya FC Budget", "Ekhaya FC Budget", "—", 20000000, 0],
+  ["2026-01-01", "Ammon Chirwa | Petty Cash for Cowboys Castel Cup vs Shire Wimbe", "EFC208-2402", "534068-1", 0, 83000],
+  ["2026-01-01", "Platinum Suits | Accommodation Cowboys Castel Cup vs Shire Wimbe", "EFC208-2205", "534068-2", 0, 4223340],
+  ["2026-01-01", "TotalEnergies Malawi | Fuel Cowboys Castel Cup vs Shire Wimbe trip", "EFC208-3401", "534068-3", 0, 1467396.7],
+  ["2026-01-01", "Thando Mhango | Travel Allowance CEO Wimbe Castel Cup Away", "EFC105-2104", "534070-1", 0, 180000],
+  ["2026-01-01", "Mphatso Mpinganjira | Travel Allowance Chairman on Wimbe Castel Cup Away", "EFC105-2104", "534070-2", 0, 180000],
+  ["2026-01-01", "EFC Supporters Committee | Support for supporters on Wimbe Castel Cup Away", "EFC292-3401", "534070-3", 0, 400000],
+  ["2026-01-01", "TotalEnergies Malawi | Fuel for CEO & Chairman on Wimbe Castel Cup Away", "EFC105-3401", "534070-4", 0, 746550],
+  ["2026-01-01", "Reserve Team Players | Reserve Team TPT 12 to 17 Jan 2026", "EFC402-2102", "534069", 0, 522500],
+  ["2026-01-01", "Football Association of Malawi | 2026 Club License Application Fees", "EFC212-3901", "534148", 0, 300000],
+  ["2026-01-01", "Youth Team Squad | Youth Team Bonus vs Young Stars", "EFC504-4685", "534054", 0, 160000],
+  ["2026-01-01", "Mens Team Squad | Mens Travel Allow Castel vs S Wimbe", "EFC208-2104", "534077", 0, 980000],
+  ["2026-01-01", "Transfer | January 2026 Petty Cash Expenses", "EFC214-3519", "534547", 0, 646125],
+  ["2026-01-01", "Womens Team Players | Cowgirls TPT Back from Break", "EFC302-2102", "534543", 0, 1046000],
+  ["2026-01-01", "Womens Team Players | Womens TPT 16 to 31 January 2026", "EFC302-2102", "534544", 0, 1568000],
+  ["2026-01-01", "Thando Mhango | Refund on CEO Accommodation Castel Trip LL", "EFC105-2205", "534582", 0, 300000],
+  ["2026-01-01", "Mens Team Squad | Win Bonuses vs Ntaja n Wimbe", "EFC208-4685", "535049", 0, 5225000],
+  ["2026-01-01", "Youth Team Squad | Youth Team Bonus vs Yizo Yizo", "EFC504-4685", "535065", 0, 160000],
+  ["2026-01-01", "Ammon Chirwa | Cowboys Hostel hygiene & food needs for January 2026", "EFC314-3201", "535275-1", 0, 1860200],
+  ["2026-01-01", "DSTV Malawi (Blessings) | DSTV Subscription for Head Coach (Jan-Mar 2026)", "EFC214-3353", "535275-2", 0, 270000],
+  ["2026-01-01", "Dr Kampondeni | MRI Scan results interpretation for Alick Lungu", "EFC215-2517", "535275-3", 0, 200000],
+  ["2026-01-01", "Hope Chikumba | Passport fees support for Hope Chikumba", "EFC106-2411", "535275-4", 0, 120000],
+  ["2026-01-01", "Kelvin Peter Zeka | Ground rent for Youth Team for Nov & Dec 2025", "EFC502-2650", "535275-5", 0, 160000],
+  ["2026-01-01", "Telekom Networks Limited | Internet Bundles for media Team's mobile routers", "EFC108-2306", "535275-6", 0, 174000],
+  ["2026-01-01", "Franklyn Silver | Refund of Car wash expenses on EFC 1 while away", "EFC108-2402", "535275-7", 0, 200000],
+  ["2026-01-01", "Ammon Chirwa | Refund on fumigation services at new Cowboys Hostel", "EFC214-3519", "535275-8", 0, 140000],
+  ["2026-01-01", "Blessings Gwembere | Refund Relocation of beds to the new Cowboys hostel", "EFC214-3519", "535275-9", 0, 100000],
+  ["2026-01-01", "Raphael Dzonzi | Replica Jersey alteration charges", "EFC108-2402", "535275-10", 0, 200000],
+  ["2026-01-01", "Samson Chiwambo | Relocation of DSTV gadgets to Chirimba", "EFC214-3353", "535275-11", 0, 140000],
+  ["2026-01-01", "Online Banking Transfer | Funds Transfer from Revenue AC to", "Funds Transfer from Revenue AC to", "—", 22000000, 0],
+  ["2026-01-01", "Mwayiwawo Moyo Tizola | Acquisition of Players: Sign on fee for Lucky Tizola", "EFC600-4199", "536019-1", 0, 4500000],
+  ["2026-01-01", "Gift Chunga | Acquisition of Players: Sign on fee for Gift Chunga", "EFC600-4199", "536019-2", 0, 3000000],
+  ["2026-01-01", "Womens Team Players | TPT Youth during Holidays", "EFC502-2102", "536274", 0, 558000],
+  ["2026-01-01", "Prime Store.MW | Two iPad keyboards and stylus pens", "EFC600-4115", "536190-1", 0, 1350000],
+  ["2026-01-01", "Hooked Up Security | Security Charges for December 2025", "EFC214-2410", "536190-2", 0, 2097000],
+  ["2026-01-01", "Johnson Sekani | EFC Supporters Committee: Castel Cup vs Dedza", "EFC292-2411", "536190-3", 0, 1000000],
+  ["2026-01-01", "Up Town Lodge | Mens Team Accommodation Castel Cup Away in BLK", "EFC208-2205", "536190-4", 0, 1306462.5],
+  ["2026-01-01", "Ekhaya Food Shop (Gateway Mall) | Mens Team meals Castel Cup vs Shire Wimbe", "EFC208-2205", "536190-5", 0, 672560],
+  ["2026-01-01", "Platinum Suits | Mens Team meals Castel Cup vs Shire Wimbe", "EFC208-2205", "536190-6", 0, 1035690],
+  ["2026-01-01", "Youth Team Squad | Youth Team TPT support from 5th to 16 January 2026", "EFC502-2102", "535960", 0, 930000],
+  ["2026-01-01", "Womens Team Players | Cowboys TPT support from 1 to 16 January 2026", "EFC202-2102", "535980", 0, 1970000],
+  ["2026-01-01", "Online Banking Transfer | WCM Ops to FC Ops", "WCM Ops to FC Ops", "—", 10000000, 0],
+  ["2026-01-01", "Online Banking Transfer | WCM Rev to EFC Ops", "WCM Rev to EFC Ops", "—", 30000000, 0],
+  ["2026-01-01", "Thando Mhango | Special Castel Cup support vs Dedza", "EFC292-3401", "536591", 0, 800000],
+  ["2026-01-01", "FDH bank | Bank service charges for january 2026", "EFC104-3305", "—", 0, 16300],
+  ["2026-01-01", "Youth Team Squad | Youth Team TPT support from 19th to 31 January 2026", "EFC502-2102", "536636", 0, 1005000],
+  ["2026-01-01", "Chrispin Chikwama | Professional HR Retainer Fees for January 2026", "EFC104-2902", "536710", 0, 800000],
+  ["2026-01-01", "Youth Team Squad | Youth Team Bonus Win (2-0) vs Wanderers Youth", "EFC504-4685", "537469", 0, 160000],
+  ["2026-01-01", "Womens Team Players | Womens Bonus Win (1-5) vs FOMO", "EFC304-4685", "537430", 0, 610000],
+  ["2026-01-01", "Zito Auto Parts & Glass Centre | Spare parts (Fog Lights) for CEO's vehicle", "EFC116-3512", "537435-1", 0, 250000],
+  ["2026-01-01", "Phatafuli Investments | Supply and delivery of Football pump & accessories", "EFC202-2402", "537435-2", 0, 170325],
+  ["2026-01-01", "Mens Team Players | Cowboys TPT support from 19 to 26 January 2026", "EFC202-2102", "537514", 0, 1230000],
+  ["2026-01-01", "Benard Chipeya | Supply and delivery of Cup game Kits & football boots", "EFC211-2408", "537112-1", 0, 4025000],
+  ["2026-01-01", "Chilekeni Enterprises | Colour tonner cartridges & photocopying papers", "EFC107-2407", "537112-2", 0, 1210000],
+  ["2026-01-01", "Alex & Paulina Katundu | House Rentals for Head Coach Jan - Mar 2026", "EFC214-2603", "537112-3", 0, 2400000],
+  ["2026-01-01", "Corporate Graphics | Design for Ekhaya FC 2026 Season kits", "EFC108-2420", "537112-4", 0, 3495000],
+  ["2026-01-01", "Unified Communications | Star-Link internet services Jan - March 2026", "EFC108-2306", "537112-5", 0, 450000],
+  ["2026-01-01", "TotalEnergies Malawi | Fuel for Cowgirls trip to Zomba vs Zomba Lionesses", "EFC504-3401", "537112-6", 0, 170000],
+  ["2026-01-01", "Aisha Sattar | Hosting & resting Mens Team vs Tigers", "EFC203-2205", "537112-7", 0, 500000],
+  ["2026-01-01", "Aisha Sattar | Relocation of Cowboys stuff to Chirimba", "EFC214-3519", "537112-8", 0, 450000],
+  ["2026-01-01", "Thando Mhango | Refund on purchase of stamina supplement for Cowboys", "EFC214-3519", "537112-9", 0, 283100],
+  ["2026-01-01", "George Musta Taumbe | Refund Airticket for E. Saviel Jr going back to Lusaka", "EFC213-2201", "537112-10", 0, 1247700],
+  ["2026-01-01", "Ammon Chirwa | Cowgirls Hostel hygiene & food needs for January 2026", "EFC314-3201", "537112-11", 0, 2121200],
+  ["2026-01-01", "Top Lodges | Mens Team camping for Castel Cup vs Dedza", "EFC207-2205", "537112-12", 0, 2000000],
+  ["2026-01-01", "Ammon Chirwa | Refund on EFC 1 Aircon Gas refill charges", "EFC216-3512", "537112-13", 0, 475000],
+  ["2026-01-01", "Mens Team Players | Selected Mens Team Players TPT Support to Holiday", "EFC202-2102", "537621", 0, 410000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Secretariat", "EFC103-2511", "538570", 0, 609000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Mens Team", "EFC215-2511", "538570", 0, 2019000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Womens Team", "EFC315-2511", "538570", 0, 1075000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Reserve Team", "EFC415-2511", "538570", 0, 597000],
+  ["2026-01-01", "Medical Aid Society of Malawi | MASM Cover for February 2026 - Youth", "EFC515-2511", "538570", 0, 448000],
+  ["2026-02-01", "TotalEnergies Malawi | Feb 2026 monthly Fuel for Secretariat", "EFC102-3401", "539843-1", 0, 1415025],
+  ["2026-02-01", "TotalEnergies Malawi | Feb 2026 monthly Fuel for Mens Team Technical", "EFC202-3401", "539843-1", 0, 1588800],
+  ["2026-02-01", "Enos Chatama | Feb 2026 monthly Training Allowance for H/Coach", "EFC202-2102", "539843-2", 0, 600000],
+  ["2026-02-01", "Alick Lungu | Feb 2026 monthly Training Allowance for players", "EFC302-2819", "539843-3", 0, 150000],
+  ["2026-02-01", "Patricia Makwakwa | Feb 2026 monthly Training Allowance Cowgirls Coach", "EFC202-2819", "539843-4", 0, 150000],
+  ["2026-02-01", "Muhamed Mohamed | M/Vehicle maintenance tyres for BT 14727", "EFC216-3512", "539941-1", 0, 759996],
+  ["2026-02-01", "Phrmaprime Pharmacy | Purchase of medical drugs", "EFC215-2501", "539941-2", 0, 770300],
+  ["2026-02-01", "Bvumbwe Auto Parts | M/Vehicle maintenance bearing for BT 13415", "EFC416-3512", "539941-3", 0, 750000],
+  ["2026-02-01", "Blessings Gwembere | DSTV for Cowgirls hostel - Feb to April 2026", "EFC314-3353", "539941-4", 0, 270000],
+  ["2026-02-01", "Womens Team Players | Womens TPT 3 to 14 February 2026", "EFC302-2102", "540357", 0, 1542000],
+  ["2026-02-01", "Youth Team Squad | Youth TPT 3rd to 14th February 2026", "EFC502-2102", "540345", 0, 1096000],
+  ["2026-02-01", "Davie Matemba | Purchase of Football Boots for Cowgirls", "EFC311-2408", "540432-1", 0, 780000],
+  ["2026-02-01", "Edmand Mapulanga | Laundry charges for Reserve Team Kit", "EFC208-2402", "540432-2", 0, 150000],
+  ["2026-02-01", "Only Banda | Laundry charges for Mens Team Kit", "EFC404-2402", "540432-3", 0, 120000],
+  ["2026-02-01", "Brian Ndawanje | Dwelling house rentals for Cowgirls hostel Jan-Mar 2026", "EFC314-2603", "540432-4", 0, 1440000],
+  ["2026-02-01", "TotalEnergies Malawi | Fuel for Cowgirls Zomba trip", "EFC404-3401", "540432-5", 0, 198153.15],
+  ["2026-02-01", "Ronald Chimchere | Refund on freight charges for Jersey & kits sample (China)", "EFC600-1000", "540432-6", 0, 1450073.14],
+  ["2026-02-01", "Malamulo Nursing Hospital | Tuition Fees for Patrick Dominic", "EFC403-4685", "540432-7", 0, 960500],
+  ["2026-02-01", "Francho Auto Parts | M/Vehicle maintenance: Car battery for BT 14727", "EFC216-3512", "540432-8", 0, 500000],
+  ["2026-02-01", "Online Banking Transfer | Funds Transfer from Revenue AC to", "Funds Transfer from Revenue AC to", "—", 2000000, 0],
+  ["2026-02-01", "Bank Accounts | Travel & Meal allowances: Chairman, CEO & Team Manager LL trip", "EFC213-2105", "541130", 0, 690000],
+  ["2026-02-01", "TotalEnergies Malawi | Travel & Meal allowances: Chairman, CEO & Team Manager LL trip", "EFC213-3401", "541130", 0, 1139467.5],
+  ["2026-02-01", "Online Banking Transfer | Luso to Ekhaya FC Ops", "Luso to Ekhaya FC Ops", "—", 12139467.5, 0],
+  ["2026-02-01", "Transfer | Purchase of player Wonderful Genala", "EFC600-4199", "543103", 0, 1200000],
+  ["2026-02-01", "Salary Charges | Chg EFT OtherBank - Batch 543103", "EFC104-3305", "543103", 0, 500],
+  ["2026-02-01", "Transfer | 2026 Club Licencing Lilongwe Trip", "EFC105-3401", "543079", 0, 1569733.75],
+  ["2026-02-01", "Salary Charges | Chg EFT OtherBank - Batch 543079", "EFC104-3305", "543079", 0, 500],
+  ["2026-02-01", "Mobile Banking Transfer | From: AMON CHIRWA", "From: AMON CHIRWA", "—", 270000, 0],
+  ["2026-02-01", "Transfer In | THANDO KASO MHAN", "THANDO KASO MHAN", "—", 270000, 0],
+  ["2026-02-01", "Transfer | Youth Team Bonus vs Agumbala", "EFC503-4685", "543197", 0, 160000],
+  ["2026-02-01", "Transfer | Womens Bonus Wins Zomba n Ndirande", "EFC304-4685", "543302", 0, 3650000],
+  ["2026-02-01", "Transfer | Womens TPT 17 to 28 February 2026", "EFC302-2102", "543999", 0, 1508000],
+  ["2026-02-01", "Transfer | Youth Bonus Win vs Airsport FC", "EFC504-4685", "544000", 0, 190000],
+  ["2026-02-01", "Transfer | Feb 2026 WK1 Operations Budget A", "EFC515-2511", "544017", 0, 2112527.2],
+  ["2026-02-01", "Salary Charges | Chg EFT OtherBank - Batch 544017", "EFC104-3305", "544017", 0, 1000],
+  ["2026-02-01", "Transfer | Air Ticket fare Refund LL BT LL", "EFC105-2201", "544350", 0, 351000],
+  ["2026-02-01", "Transfer | Womens Player Transfer Fees", "EFC600-4199", "544647", 0, 600000],
+  ["2026-02-01", "Salary Charges | Chg EFT OtherBank - Batch 544647", "EFC104-3305", "544647", 0, 1600],
+  ["2026-02-01", "Transfer | Media Team Allowance Online Article", "EFC108-2420", "544638", 0, 200000],
+  ["2026-02-01", "Online Banking Transfer | WCM Ops to FC Ops", "WCM Ops to FC Ops", "—", 15000000, 0],
+  ["2026-02-01", "Transfer | Player contract negotiation fees", "EFC600-4199", "545406", 0, 1000000],
+  ["2026-02-01", "Salary Charges | Chg EFT OtherBank - Batch 545406", "EFC104-3305", "545406", 0, 800],
+  ["2026-02-01", "Transfer | Feb 2026 WK3 Operations", "EFC515-2511", "—", 0, 6820000],
+  ["2026-02-01", "Salary Charges | Charge EFT - Batch 545508", "EFC104-3305", "545508", 0, 2400],
+  ["2026-02-01", "Transfer | EFC Manager n Coach Castel Finals", "EFC206-3401", "545639", 0, 923667.5],
+  ["2026-02-01", "Nazil Kalos | Vehicle licensing (COF) BT14727 & BT 14713", "EFC217-3402", "545710", 0, 122000],
+  ["2026-02-01", "Nazil Kalos | Mens Gym equipment - Relocation to Chirimba", "EFC217-3402", "545710", 0, 298000],
+  ["2026-02-01", "Oakmont Resort | Accomm for CEO, Chairman & Legal counsel AGM in SA", "EFC217-3402", "545710", 0, 600000],
+  ["2026-02-01", "Kelvin Peter Zeka | Youth Team Ground rent Jan & Feb 2026", "EFC217-3402", "545710", 0, 160000],
+  ["2026-02-01", "Ammon Chirwa | Meals for the Cowgirls playing Nsuwadzi in Mulanje", "EFC217-3402", "545710", 0, 330000],
+  ["2026-02-01", "Ammon Chirwa | Cowgirls Match day transport for medical team", "EFC217-3402", "545710", 0, 10000],
+  ["2026-02-01", "TotalEnergies Malawi | Fuel for Cowgirls trip to Nsuwadzi", "EFC217-3402", "545710", 0, 286710.31],
+  ["2026-02-01", "FDH Bank for MRA | FDH transfer levies", "EFC104-3305", "545710", 0, 3200],
+  ["2026-02-01", "FDH Bank | Bank Charges", "EFC104-3305", "—", 0, 16300],
+  ["2026-02-01", "Edu & Work Connect | Air Ticket for Technical Director", "EFC213-2201", "547163", 0, 1992835],
+  ["2026-02-01", "FDH Bank for MRA | FDH transfer levies", "EFC104-3305", "547163", 0, 800],
+  ["2026-02-01", "Transfer | Vehicle Repairs : BZ 20442", "EFC216-3512", "547179", 0, 588000],
+  ["2026-02-01", "FDH Bank for MRA | FDH transfer levies", "EFC104-3305", "547179", 0, 800],
+  ["2026-02-01", "EFT Incoming | Standard Bank - SUPER LEAGUE ASSOCIATION", "Super League", "—", 1055354, 0],
+  ["2026-02-01", "Transfer | Chair CEO n Legal on SULOM AGM Trip", "EFC105-3401", "547519", 0, 1867577.5],
+  ["2026-02-01", "FDH Bank for MRA | FDH transfer levies", "EFC104-3305", "547519", 0, 1600],
+  ["2026-03-01", "Ammon Chirwa | Cowgirls Hostel food needs", "EFC314-3201", "548752", 0, 323526.6],
+  ["2026-03-01", "Total Energies Malawi Marketing Ltd | Fuel for Cowgirls away game Bvumbwe", "EFC304-3401", "—", 0, 175000],
+  ["2026-03-01", "Blantyre Water Board | Water Bills for Cowgirls Hostel", "EFC314-2305", "—", 0, 168130],
+  ["2026-03-01", "TMT Transport | Maize transportation to warehouse", "Maize transport", "—", 0, 200000],
+  ["2026-03-01", "Nazil Kalos | Motor Vehicle COF", "Motor Vehicle COF", "—", 0, 240000],
+  ["2026-03-01", "Salary Charges | Charge EFT - Batch 548752", "EFC104-3305", "548752", 0, 1600],
+  ["2026-03-01", "Transfer In | FUNDS TRANSFER from Acc.No. 1850000151391", "FUNDS TRANSFER", "—", 50000000, 0],
+  ["2026-03-01", "Masimba Consulting | HR Retainer Fees for February 2026", "EFC104-2902", "550176", 0, 800000],
+  ["2026-03-01", "EM Auto Parts | Service Parts for BT 13415", "EFC216-3512", "550633", 0, 700000],
+  ["2026-03-01", "EM Auto Parts | Service Parts for BR 7624", "EFC216-3512", "—", 0, 178000],
+  ["2026-03-01", "EM Auto Parts | Service Parts for BT 14955", "EFC316-3512", "—", 0, 660000],
+  ["2026-03-01", "Bvumbwe Auto Parts | Engine Oil for EFC 1", "EFC216-3512", "—", 0, 300000],
+  ["2026-03-01", "Salary Charges | Chg EFT OtherBank - Batch 550633", "EFC104-3305", "550633", 0, 3200],
+  ["2026-03-01", "Total Energies Malawi Marketing Ltd | Monthly fuel allocation Management team", "EFC102-3401", "550637", 0, 595800],
+  ["2026-03-01", "Total Energies Malawi Marketing Ltd | Monthly fuel expenditure Utility", "EFC107-3401", "550637", 0, 1381249.85],
+  ["2026-03-01", "Total Energies Malawi Marketing Ltd | Monthly fuel allocation technical team", "EFC202-3401", "550637", 0, 993000],
+  ["2026-03-01", "Enos Chatama | Monthly training allowance for Feb 2026", "EFC202-2819", "550637", 0, 150000],
+  ["2026-03-01", "Alick Lungu | Monthly training allowance for Feb 2026", "EFC202-2819", "550637", 0, 150000],
+  ["2026-03-01", "Transfer | Womens Bonus Wins Nsuwazi n Bvumbwe", "EFC304-4685", "550773", 0, 3290000],
+  ["2026-03-01", "Transfer | Womens TPT 2 to 8 March 2026", "EFC302-2102", "550866", 0, 1021000],
+  ["2026-03-01", "Salary Charges | Charge EFT - Batch 550637", "EFC104-3305", "550637", 0, 800],
+  ["2026-03-01", "Oneclick Bulk Payment | FUNDS TRANSFER", "FUNDS TRANSFER", "—", 111495452.91, 0],
+  ["2026-03-01", "Account Transfer Charges | AC-1860000006486", "EFC600-1000", "—", 0, 106900],
+  ["2026-03-01", "Funds Transfer | EUR34500.71 to CROWN AGENTS BANK EUR CURRENT", "EFC600-1000", "—", 0, 111340553.31],
+  ["2026-03-01", "Account Transfer Charges | AC-1860000006467", "EFC600-1000", "—", 0, 10506],
+  ["2026-03-01", "Funds Transfer | USDCHG CONV to CROWN AGENTS BANK USD CURRENT", "EFC600-1000", "—", 0, 52530],
+  ["2026-03-01", "Funds Transfer | USD35 to CROWN AGENTS BANK USD CURRENT", "EFC600-1000", "—", 0, 61285],
+  ["2026-03-01", "Transfer | Advanced Leadership Prog TFM Centre", "EFC102-2803", "551187", 0, 5000000],
+  ["2026-03-01", "FDH Properties | Rentals Ekhaya Football Club offices Jan-Mar 2026", "EFC107-2601", "551543", 0, 1917077.43],
+  ["2026-03-01", "Hooked up Security | Security Charges February 2026 H/Coach's residence", "EFC202-2410", "551543", 0, 2115000],
+  ["2026-03-01", "Hooked up Security | Security Charges February 2026 Cowgirls hostel", "EFC314-2410", "551543", 0, 2115000],
+  ["2026-03-01", "Ammon Chirwa | Hostel needs for Cowgirls", "EFC214-3201", "551543", 0, 1517100],
+  ["2026-03-01", "Blessing Gwembere | ESCOM units for Cowboys hostel", "EFC214-2301", "551543", 0, 100000],
+  ["2026-03-01", "Blessing Gwembere | ESCOM units for Cowgirls hostel", "EFC314-2301", "551543", 0, 100000],
+  ["2026-03-01", "Blessing Gwembere | ESCOM units for EFC Offices (Kristwick)", "EFC107-2301", "551543", 0, 120000],
+  ["2026-03-01", "BB Engineering | Motor Vehicle maintenances - EFC 1", "EFC216-3512", "551543", 0, 2589000],
+  ["2026-03-01", "BB Engineering | Motor Vehicle Repair services - labour BT 14955", "EFC316-3512", "551543", 0, 330000],
+  ["2026-03-01", "BB Engineering | Motor Vehicle Repair services - labour BT 13415", "EFC416-3512", "551543", 0, 330000],
+  ["2026-03-01", "BB Engineering | Motor Vehicle maintenances - BR 7624", "EFC216-3512", "551543", 0, 500000],
+  ["2026-03-01", "BB Engineering | Motor Vehicle New tyres for - BT 14727", "EFC316-3512", "551543", 0, 869500],
+  ["2026-03-01", "Brian Ndawanje | Rentals Cowgirls hostel Top up Jan-Mar 2026", "EFC314-2603", "551543", 0, 360000],
+  ["2026-03-01", "Salary Charges | Bank Charges", "EFC104-3305", "551543", 0, 1600],
+  ["2026-03-01", "Transfer | Technical Director House Rentals", "EFC202-2603", "552185", 0, 6000000],
+  ["2026-03-01", "MASM - Blantyre | Medical Cover for March 2026 : Secretariat", "EFC103-2511", "552194", 0, 609000],
+  ["2026-03-01", "MASM - Blantyre | Medical Cover for March 2026 : Cowboys", "EFC215-2511", "552194", 0, 2135000],
+  ["2026-03-01", "MASM - Blantyre | Medical Cover for March 2026 : Cowgirls", "EFC315-2511", "552194", 0, 1075000],
+  ["2026-03-01", "MASM - Blantyre | Medical Cover for March 2026 : Reserve", "EFC415-2511", "552194", 0, 597000],
+  ["2026-03-01", "MASM - Blantyre | Medical Cover for March 2026 : Youth", "EFC515-2511", "552194", 0, 448000],
+  ["2026-03-01", "Transfer | Cowboys TPT 4 to 27 March 2026", "EFC202-2102", "552485", 0, 2320000],
+  ["2026-03-01", "Transfer | March 2026 WK2 2026 Supp Budget", "EFC213-2205", "552682", 0, 764000],
+  ["2026-03-01", "Salary Charges | Chg EFT OtherBank", "EFC104-3305", "552682", 0, 1600],
+  ["2026-03-01", "Transfer | Chair CEO n Legal on SULOM AGM Trip", "EFC105-2104", "553017", 0, 500000],
+  ["2026-03-01", "Ammon for TD | Technical Director Expenses Processing Work Permit", "EFC103-2201", "553324", 0, 516203.75],
+  ["2026-03-01", "Ammon for TD | Technical Director Expenses Processing Work Permit", "EFC103-2202", "553324", 0, 1751000],
+  ["2026-03-01", "Francis Khan | Full Day training expenses for Cowboys", "EFC202-2411", "553382", 0, 689880],
+  ["2026-03-01", "Francis Khan | Full Day training expenses for Cowboys", "EFC202-2411", "553382", 0, 960000],
+  ["2026-03-01", "Transfer | Players Medical Tests March 2026", "EFC215-2517", "554512", 0, 1615000],
+  ["2026-03-01", "Salary Charges | Chg EFT OtherBank - Batch 554512", "EFC104-3305", "554512", 0, 800],
+  ["2026-03-01", "Transfer In | CHILOBWE UNITED", "CHILOBWE UNITED", "—", 500000, 0],
+  ["2026-03-01", "Transfer | HR Retainer Fees for March 2026", "EFC104-2902", "555918", 0, 800000],
+  ["2026-03-01", "Fees Debited | 1910000195197", "EFC104-3305", "—", 0, 17930],
+  ["2026-03-01", "Online Banking Transfer | Funds Transfer from Revenue AC to", "Funds Transfer from Revenue AC to", "—", 13800000, 0],
+  ["2026-03-01", "Transfer | Cowboys Travel Allowance Sapitwa", "EFC202A-2104", "556678", 0, 890000],
+  ["2026-03-01", "Transfer | Cowboys Sapitwa Trip", "EFC202A-3401", "556676", 0, 5317648],
+  ["2026-03-01", "Salary Charges | Bank Charges", "EFC104-3305", "556676", 0, 800],
+  ["2026-03-01", "Transfer | Chair CEO n Co on Sapitwa Trip", "EFC105-3401", "557073", 0, 1916835],
+  ["2026-03-01", "Salary Charges | Chg EFT OtherBank - Batch 557073", "EFC104-3305", "557073", 0, 1600],
 ];
 
+const _PAYMENTS = RAW_CASHBOOK.filter(r => r[5] > 0);
+const _DEPOSITS = RAW_CASHBOOK.filter(r => r[4] > 0);
+const OPENING_BALANCE = 19571.81;
+const TOTAL_DEPOSITS = _DEPOSITS.reduce((s, r) => s + r[4], 0);
+const TOTAL_PAYMENTS = _PAYMENTS.reduce((s, r) => s + r[5], 0);
+
+function parseAccountCode(code) {
+  if (!code || !code.startsWith("EFC")) return null;
+  const m = code.match(/EFC(\d)(\d{2})[A-Z]?-(\d{4})/);
+  if (!m) return null;
+  const deptKey = m[1];
+  const suffix = m[3];
+  const dept = DEPT_MAP[deptKey] || `Dept ${deptKey}`;
+  const expense = EXPENSE_TYPE_MAP[suffix] || `Type ${suffix}`;
+  return { dept, expense, deptKey, suffix };
+}
+
+const INITIAL_CASHBOOK = RAW_CASHBOOK.map((r, i) => {
+  const [date, desc, detail, chq, deposit, payment] = r;
+  const isDeposit = deposit > 0;
+  const parsed = parseAccountCode(detail);
+  return {
+    id: i + 1,
+    date,
+    description: desc.split(" | ")[1] || desc,
+    payee: desc.split(" | ")[0] || "",
+    details: detail,
+    chequeNo: chq,
+    deposit,
+    payment,
+    balance: 0,
+    isDeposit,
+    parsed,
+    deptKey: parsed?.deptKey || "",
+    suffix: parsed?.suffix || "",
+  };
+});
+
+let _bal = OPENING_BALANCE;
+INITIAL_CASHBOOK.forEach(tx => {
+  _bal += tx.deposit - tx.payment;
+  tx.balance = Math.round(_bal * 100) / 100;
+});
+
+/* ---------- Revenue Account Summary helpers ---------- */
+function getMonthlySummary() {
+  const months = {};
+  INITIAL_CASHBOOK.forEach(tx => {
+    const m = tx.date.slice(0, 7);
+    if (!months[m]) months[m] = { month: m, deposits: 0, payments: 0, count: 0 };
+    months[m].deposits += tx.deposit;
+    months[m].payments += tx.payment;
+    months[m].count++;
+  });
+  return Object.values(months).sort((a, b) => a.month.localeCompare(b.month));
+}
+
+function getCategorySummary() {
+  const cats = {};
+  INITIAL_CASHBOOK.forEach(tx => {
+    if (tx.isDeposit) {
+      const key = tx.parsed?.dept || "Other Deposits";
+      if (!cats[key]) cats[key] = { category: key, deposits: 0, payments: 0 };
+      cats[key].deposits += tx.deposit;
+    } else {
+      const key = tx.parsed ? `${tx.parsed.dept} - ${tx.parsed.expense}` : tx.description;
+      if (!cats[key]) cats[key] = { category: key, deposits: 0, payments: 0 };
+      cats[key].payments += tx.payment;
+    }
+  });
+  return Object.values(cats).filter(c => c.deposits > 0 || c.payments > 0).sort((a, b) => (b.deposits + b.payments) - (a.deposits + a.payments));
+}
+
+function getDeptSummary() {
+  const depts = {};
+  INITIAL_CASHBOOK.forEach(tx => {
+    const dept = tx.parsed?.dept || (tx.isDeposit ? "Deposits" : "Unallocated");
+    if (!depts[dept]) depts[dept] = { dept, deposits: 0, payments: 0 };
+    depts[dept].deposits += tx.deposit;
+    depts[dept].payments += tx.payment;
+  });
+  return Object.values(depts).sort((a, b) => (b.deposits - b.payments) - (a.deposits - a.payments));
+}
 const NAV = [
   { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { key: "medical", label: "Medical", icon: HeartPulse },
@@ -529,56 +585,44 @@ const inputStyle = {
 
 function RevenueCashbook() {
   const [search, setSearch] = useState("");
-  const [catFilter, setCatFilter] = useState("all");
-  const [sortConfig, setSortConfig] = useState({ key: "date", dir: "asc" });
+  const [typeFilter, setTypeFilter] = useState("all");
+  const [deptFilter, setDeptFilter] = useState("all");
+  const [monthFilter, setMonthFilter] = useState("all");
+  const [sortConfig, setSortConfig] = useState({ key: "id", dir: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
+  const [showSummary, setShowSummary] = useState("transactions");
   const PER_PAGE = 25;
 
-  const categories = Object.values(REVENUE_ACCOUNTS);
+  const monthlySummary = useMemo(() => getMonthlySummary(), []);
+  const categorySummary = useMemo(() => getCategorySummary(), []);
+  const deptSummary = useMemo(() => getDeptSummary(), []);
 
-  const processedData = useMemo(() => {
-    let balance = 0;
-    return INITIAL_CASHBOOK.map(tx => {
-      const amt = tx.type === "credit" ? tx.amount : -tx.amount;
-      balance += amt;
-      const cat = REVENUE_ACCOUNTS[tx.accountCode] || null;
-      return { ...tx, balance, category: cat, catAmount: cat ? tx.amount : 0 };
-    });
-  }, []);
-
-  const totals = useMemo(() => {
-    const t = {};
-    categories.forEach(c => { t[c] = 0; });
-    let totalCredit = 0, totalDebit = 0;
-    INITIAL_CASHBOOK.forEach(tx => {
-      if (tx.type === "credit") totalCredit += tx.amount;
-      else totalDebit += tx.amount;
-      const cat = REVENUE_ACCOUNTS[tx.accountCode];
-      if (cat) t[cat] += tx.amount;
-    });
-    return { categories: t, totalCredit, totalDebit, closingBalance: totalCredit - totalDebit + 92200 };
-  }, []);
+  const months = [...new Set(INITIAL_CASHBOOK.map(tx => tx.date.slice(0, 7)))].sort();
+  const departments = [...new Set(INITIAL_CASHBOOK.map(tx => tx.parsed?.dept).filter(Boolean))].sort();
 
   const filtered = useMemo(() => {
-    let rows = [...processedData];
+    let rows = [...INITIAL_CASHBOOK];
     if (search) {
       const q = search.toLowerCase();
-      rows = rows.filter(r =>
-        r.description.toLowerCase().includes(q) ||
-        r.details.toLowerCase().includes(q) ||
-        r.date.includes(q) ||
-        (r.accountCode && r.accountCode.toLowerCase().includes(q)) ||
-        (r.category && r.category.toLowerCase().includes(q))
+      rows = rows.filter(tx =>
+        tx.payee.toLowerCase().includes(q) ||
+        tx.description.toLowerCase().includes(q) ||
+        tx.details.toLowerCase().includes(q) ||
+        tx.date.includes(q) ||
+        tx.chequeNo.toLowerCase().includes(q)
       );
     }
-    if (catFilter !== "all") rows = rows.filter(r => r.category === catFilter);
+    if (typeFilter === "deposits") rows = rows.filter(tx => tx.isDeposit);
+    else if (typeFilter === "payments") rows = rows.filter(tx => !tx.isDeposit);
+    if (deptFilter !== "all") rows = rows.filter(tx => tx.parsed?.dept === deptFilter);
+    if (monthFilter !== "all") rows = rows.filter(tx => tx.date.startsWith(monthFilter));
     rows.sort((a, b) => {
       const aVal = a[sortConfig.key], bVal = b[sortConfig.key];
       if (typeof aVal === "string") return sortConfig.dir === "asc" ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
       return sortConfig.dir === "asc" ? aVal - bVal : bVal - aVal;
     });
     return rows;
-  }, [processedData, search, catFilter, sortConfig]);
+  }, [search, typeFilter, deptFilter, monthFilter, sortConfig]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paged = filtered.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
@@ -588,78 +632,104 @@ function RevenueCashbook() {
   };
 
   const exportCSV = () => {
-    const headers = ["Date", "Description", "Details", "Account Code", "Category", "Debit", "Credit", "Running Balance"];
-    const rows = filtered.map(r => [
-      r.date, r.description, r.details, r.accountCode, r.category || "",
-      r.type === "debit" ? r.amount : "",
-      r.type === "credit" ? r.amount : "",
-      r.balance
-    ]);
+    const headers = ["Date", "Payee", "Description", "Account Code", "Cheque No", "Deposit", "Payment", "Balance"];
+    const rows = filtered.map(tx => [tx.date, tx.payee, tx.details, tx.details.startsWith("EFC") ? tx.details : "", tx.chequeNo, tx.deposit || "", tx.payment || "", tx.balance]);
     const csv = [headers, ...rows].map(r => r.map(c => `"${c}"`).join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "cashbook_revenue_2025.csv";
+    a.download = "revenue_account_cashbook_2026.csv";
     a.click();
   };
 
   const cardStyle = { background: COLORS.surface2, border: `1px solid ${COLORS.border}`, borderRadius: 12, padding: "18px 20px" };
   const thStyle = { textAlign: "left", padding: "10px 12px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: COLORS.muted, borderBottom: `2px solid ${COLORS.border}`, cursor: "pointer", userSelect: "none", whiteSpace: "nowrap" };
   const tdStyle = { padding: "10px 12px", fontSize: 13, borderBottom: `1px solid ${COLORS.border}`, color: COLORS.text, whiteSpace: "nowrap" };
+  const tabBtn = (active) => ({ background: active ? COLORS.gold : "transparent", color: active ? "#000" : COLORS.muted, border: `1px solid ${active ? COLORS.gold : COLORS.border}`, borderRadius: 7, padding: "7px 16px", fontSize: 12, fontWeight: 600, cursor: "pointer" });
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+      {/* Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
         <div>
-          <h2 style={{ color: COLORS.gold, fontSize: 20, fontWeight: 700, fontFamily: "'Outfit', sans-serif", margin: 0 }}>Revenue Cashbook 2025</h2>
-          <p style={{ color: COLORS.muted, fontSize: 12, margin: "4px 0 0" }}>Account: EFC101 | Opening Balance: MWK 92,200 | {processedData.length} transactions</p>
+          <h2 style={{ color: COLORS.gold, fontSize: 20, fontWeight: 700, fontFamily: "'Outfit', sans-serif", margin: 0 }}>Revenue Account Cashbook 2026</h2>
+          <p style={{ color: COLORS.muted, fontSize: 12, margin: "4px 0 0" }}>Ekhaya Football Club | Jan – Mar 2026 | Opening Balance: MWK 19,571.81</p>
         </div>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <input style={{ ...inputStyle, width: 200 }} placeholder="Search..." value={search} onChange={e => { setSearch(e.target.value); setCurrentPage(1); }} />
-          <select style={{ ...inputStyle, width: 160 }} value={catFilter} onChange={e => { setCatFilter(e.target.value); setCurrentPage(1); }}>
-            <option value="all">All Categories</option>
-            {categories.map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-          <button onClick={exportCSV} style={{ background: COLORS.gold, color: "#000", fontWeight: 600, fontSize: 12, padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer" }}>Export CSV</button>
-        </div>
+        <button onClick={exportCSV} style={{ background: COLORS.gold, color: "#000", fontWeight: 600, fontSize: 12, padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer" }}>Export CSV</button>
       </div>
 
       {/* Summary Cards */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
         <div style={{ ...cardStyle, borderLeft: `3px solid ${COLORS.success}` }}>
-          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Total Credits</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.success, marginTop: 4 }}>MWK {totals.totalCredit.toLocaleString()}</div>
+          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Total Funding (Deposits)</div>
+          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.success, marginTop: 4 }}>MWK {TOTAL_DEPOSITS.toLocaleString()}</div>
         </div>
         <div style={{ ...cardStyle, borderLeft: `3px solid ${COLORS.danger}` }}>
-          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Total Debits</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.danger, marginTop: 4 }}>MWK {totals.totalDebit.toLocaleString()}</div>
+          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Total Expenditure (Payments)</div>
+          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.danger, marginTop: 4 }}>MWK {TOTAL_PAYMENTS.toLocaleString()}</div>
         </div>
         <div style={{ ...cardStyle, borderLeft: `3px solid ${COLORS.gold}` }}>
-          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Closing Balance</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.gold, marginTop: 4 }}>MWK {totals.closingBalance.toLocaleString()}</div>
+          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Net Balance</div>
+          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.gold, marginTop: 4 }}>MWK {INITIAL_CASHBOOK[INITIAL_CASHBOOK.length - 1]?.balance.toLocaleString()}</div>
         </div>
-        {categories.map(c => (
-          <div key={c} style={{ ...cardStyle, borderLeft: `3px solid ${COLORS.goldLight}` }}>
-            <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c}</div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: COLORS.text, marginTop: 4 }}>MWK {totals.categories[c].toLocaleString()}</div>
-          </div>
-        ))}
+        <div style={{ ...cardStyle, borderLeft: `3px solid ${COLORS.goldLight}` }}>
+          <div style={{ fontSize: 11, color: COLORS.muted, textTransform: "uppercase" }}>Transactions</div>
+          <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.text, marginTop: 4 }}>{INITIAL_CASHBOOK.length}</div>
+        </div>
       </div>
 
-      {/* Category Breakdown */}
+      {/* Monthly Summary */}
       <div style={cardStyle}>
-        <h3 style={{ color: COLORS.gold, fontSize: 14, fontWeight: 700, marginBottom: 16 }}>Revenue by Category</h3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
-          {categories.map(c => {
-            const val = totals.categories[c];
-            const pct = totals.totalCredit > 0 ? ((val / totals.totalCredit) * 100).toFixed(1) : 0;
+        <h3 style={{ color: COLORS.gold, fontSize: 14, fontWeight: 700, marginBottom: 12 }}>Monthly Summary</h3>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={thStyle}>Month</th>
+                <th style={{ ...thStyle, textAlign: "right" }}>Deposits</th>
+                <th style={{ ...thStyle, textAlign: "right" }}>Payments</th>
+                <th style={{ ...thStyle, textAlign: "right" }}>Net</th>
+              </tr>
+            </thead>
+            <tbody>
+              {monthlySummary.map(m => {
+                const d = new Date(m.month + "-01");
+                const label = d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+                return (
+                  <tr key={m.month}>
+                    <td style={{ ...tdStyle, fontWeight: 600 }}>{label}</td>
+                    <td style={{ ...tdStyle, textAlign: "right", color: COLORS.success, fontWeight: 700 }}>MWK {m.deposits.toLocaleString()}</td>
+                    <td style={{ ...tdStyle, textAlign: "right", color: COLORS.danger, fontWeight: 700 }}>MWK {m.payments.toLocaleString()}</td>
+                    <td style={{ ...tdStyle, textAlign: "right", color: m.deposits - m.payments >= 0 ? COLORS.gold : COLORS.danger, fontWeight: 700 }}>MWK {(m.deposits - m.payments).toLocaleString()}</td>
+                  </tr>
+                );
+              })}
+              <tr style={{ borderTop: `2px solid ${COLORS.gold}44` }}>
+                <td style={{ ...tdStyle, fontWeight: 700, color: COLORS.gold }}>Total</td>
+                <td style={{ ...tdStyle, textAlign: "right", color: COLORS.success, fontWeight: 700 }}>MWK {TOTAL_DEPOSITS.toLocaleString()}</td>
+                <td style={{ ...tdStyle, textAlign: "right", color: COLORS.danger, fontWeight: 700 }}>MWK {TOTAL_PAYMENTS.toLocaleString()}</td>
+                <td style={{ ...tdStyle, textAlign: "right", color: COLORS.gold, fontWeight: 700 }}>MWK {(TOTAL_DEPOSITS - TOTAL_PAYMENTS).toLocaleString()}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Department Summary */}
+      <div style={cardStyle}>
+        <h3 style={{ color: COLORS.gold, fontSize: 14, fontWeight: 700, marginBottom: 12 }}>Expenditure by Department</h3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
+          {deptSummary.map(d => {
+            const total = d.deposits + d.payments;
+            const maxDept = Math.max(...deptSummary.map(x => x.deposits + x.payments));
+            const pct = maxDept > 0 ? (total / maxDept * 100) : 0;
             return (
-              <div key={c} style={{ padding: "10px 14px", background: COLORS.surface, borderRadius: 8, border: `1px solid ${COLORS.border}` }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontSize: 12, color: COLORS.muted }}>{c}</span>
-                  <span style={{ fontSize: 11, color: COLORS.gold, fontWeight: 600 }}>{pct}%</span>
+              <div key={d.dept} style={{ padding: "10px 14px", background: COLORS.surface, borderRadius: 8, border: `1px solid ${COLORS.border}` }}>
+                <div style={{ fontSize: 12, color: COLORS.muted, marginBottom: 4 }}>{d.dept}</div>
+                <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+                  {d.deposits > 0 && <span style={{ fontSize: 12, color: COLORS.success, fontWeight: 600 }}>+MWK {d.deposits.toLocaleString()}</span>}
+                  {d.payments > 0 && <span style={{ fontSize: 12, color: COLORS.danger, fontWeight: 600 }}>-MWK {d.payments.toLocaleString()}</span>}
                 </div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: COLORS.text, marginTop: 4 }}>MWK {val.toLocaleString()}</div>
                 <div style={{ height: 4, background: COLORS.border, borderRadius: 2, marginTop: 8, overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${pct}%`, background: COLORS.gold, borderRadius: 2 }} />
                 </div>
@@ -669,72 +739,126 @@ function RevenueCashbook() {
         </div>
       </div>
 
-      {/* Transactions Table */}
-      <div style={{ ...cardStyle, padding: 0, overflow: "hidden" }}>
-        <div style={{ padding: "14px 20px", borderBottom: `1px solid ${COLORS.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h3 style={{ color: COLORS.gold, fontSize: 14, fontWeight: 700, margin: 0 }}>Transactions ({filtered.length})</h3>
-          <span style={{ fontSize: 11, color: COLORS.muted }}>Click headers to sort</span>
-        </div>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr>
-                {[
-                  { key: "date", label: "Date" },
-                  { key: "description", label: "Description" },
-                  { key: "details", label: "Details" },
-                  { key: "accountCode", label: "Account Code" },
-                  { key: "category", label: "Category" },
-                  { key: "type", label: "Dr/Cr" },
-                  { key: "amount", label: "Amount" },
-                  { key: "balance", label: "Running Balance" },
-                ].map(col => (
-                  <th key={col.key} style={thStyle} onClick={() => handleSort(col.key)}>
-                    {col.label} {sortConfig.key === col.key ? (sortConfig.dir === "asc" ? "\u25B2" : "\u25BC") : ""}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {paged.map((r, i) => (
-                <tr key={r.id} style={{ background: i % 2 === 0 ? "transparent" : COLORS.surface }}>
-                  <td style={tdStyle}>{r.date}</td>
-                  <td style={{ ...tdStyle, fontWeight: 600 }}>{r.description}</td>
-                  <td style={{ ...tdStyle, whiteSpace: "normal", maxWidth: 260 }}>{r.details}</td>
-                  <td style={{ ...tdStyle, fontFamily: "monospace", fontSize: 12, color: r.accountCode ? COLORS.gold : COLORS.muted }}>
-                    {r.accountCode || "\u2014"}
-                  </td>
-                  <td style={tdStyle}>
-                    {r.category ? (
-                      <span style={{ display: "inline-block", padding: "2px 8px", borderRadius: 4, fontSize: 11, fontWeight: 600, background: COLORS.gold + "22", color: COLORS.gold, border: `1px solid ${COLORS.gold}44` }}>
-                        {r.category}
-                      </span>
-                    ) : "\u2014"}
-                  </td>
-                  <td style={{ ...tdStyle, color: r.type === "debit" ? COLORS.danger : COLORS.success, fontWeight: 600, textAlign: "center" }}>
-                    {r.type === "debit" ? "Dr" : "Cr"}
-                  </td>
-                  <td style={{ ...tdStyle, fontWeight: 700, textAlign: "right", color: r.type === "debit" ? COLORS.danger : COLORS.success }}>
-                    {r.type === "debit" ? "(" : ""}MWK {r.amount.toLocaleString()}{r.type === "debit" ? ")" : ""}
-                  </td>
-                  <td style={{ ...tdStyle, fontWeight: 700, textAlign: "right", color: r.balance >= 0 ? COLORS.text : COLORS.danger }}>
-                    MWK {r.balance.toLocaleString()}
-                  </td>
+      {/* View Tabs */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <button style={tabBtn(showSummary === "transactions")} onClick={() => setShowSummary("transactions")}>Transactions</button>
+        <button style={tabBtn(showSummary === "categories")} onClick={() => setShowSummary("categories")}>Expense Categories</button>
+      </div>
+
+      {showSummary === "categories" && (
+        <div style={cardStyle}>
+          <h3 style={{ color: COLORS.gold, fontSize: 14, fontWeight: 700, marginBottom: 12 }}>Expenditure by Category</h3>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr>
+                  <th style={thStyle}>Category</th>
+                  <th style={{ ...thStyle, textAlign: "right" }}>Deposits</th>
+                  <th style={{ ...thStyle, textAlign: "right" }}>Payments</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={{ padding: "12px 20px", borderTop: `1px solid ${COLORS.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontSize: 12, color: COLORS.muted }}>Page {currentPage} of {totalPages || 1}</span>
-          <div style={{ display: "flex", gap: 6 }}>
-            <button disabled={currentPage <= 1} onClick={() => setCurrentPage(p => p - 1)}
-              style={{ ...navBtnStyle, opacity: currentPage <= 1 ? 0.3 : 1, fontSize: 12, padding: "6px 12px" }}>Prev</button>
-            <button disabled={currentPage >= totalPages} onClick={() => setCurrentPage(p => p + 1)}
-              style={{ ...navBtnStyle, opacity: currentPage >= totalPages ? 0.3 : 1, fontSize: 12, padding: "6px 12px" }}>Next</button>
+              </thead>
+              <tbody>
+                {categorySummary.slice(0, 30).map(c => (
+                  <tr key={c.category}>
+                    <td style={tdStyle}>{c.category}</td>
+                    <td style={{ ...tdStyle, textAlign: "right", color: c.deposits > 0 ? COLORS.success : COLORS.muted }}>{c.deposits > 0 ? `MWK ${c.deposits.toLocaleString()}` : "\u2014"}</td>
+                    <td style={{ ...tdStyle, textAlign: "right", color: c.payments > 0 ? COLORS.danger : COLORS.muted }}>{c.payments > 0 ? `MWK ${c.payments.toLocaleString()}` : "\u2014"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
+      )}
+
+      {showSummary === "transactions" && (
+        <>
+          {/* Filters */}
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            <input style={{ ...inputStyle, width: 220 }} placeholder="Search payee, description, cheque..." value={search} onChange={e => { setSearch(e.target.value); setCurrentPage(1); }} />
+            <select style={{ ...inputStyle, width: 130 }} value={typeFilter} onChange={e => { setTypeFilter(e.target.value); setCurrentPage(1); }}>
+              <option value="all">All Types</option>
+              <option value="deposits">Deposits Only</option>
+              <option value="payments">Payments Only</option>
+            </select>
+            <select style={{ ...inputStyle, width: 150 }} value={deptFilter} onChange={e => { setDeptFilter(e.target.value); setCurrentPage(1); }}>
+              <option value="all">All Departments</option>
+              {departments.map(d => <option key={d} value={d}>{d}</option>)}
+            </select>
+            <select style={{ ...inputStyle, width: 140 }} value={monthFilter} onChange={e => { setMonthFilter(e.target.value); setCurrentPage(1); }}>
+              <option value="all">All Months</option>
+              {months.map(m => {
+                const d = new Date(m + "-01");
+                return <option key={m} value={m}>{d.toLocaleDateString("en-GB", { month: "long", year: "numeric" })}</option>;
+              })}
+            </select>
+          </div>
+
+          {/* Transactions Table */}
+          <div style={{ ...cardStyle, padding: 0, overflow: "hidden" }}>
+            <div style={{ padding: "14px 20px", borderBottom: `1px solid ${COLORS.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <h3 style={{ color: COLORS.gold, fontSize: 14, fontWeight: 700, margin: 0 }}>Transactions ({filtered.length})</h3>
+              <span style={{ fontSize: 11, color: COLORS.muted }}>Click headers to sort</span>
+            </div>
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>
+                    {[
+                      { key: "date", label: "Date" },
+                      { key: "payee", label: "Payee / Source" },
+                      { key: "details", label: "Details / Account Code" },
+                      { key: "chequeNo", label: "Cheque No" },
+                      { key: "deposit", label: "Deposit" },
+                      { key: "payment", label: "Payment" },
+                      { key: "balance", label: "Balance" },
+                    ].map(col => (
+                      <th key={col.key} style={{ ...thStyle, textAlign: col.key === "deposit" || col.key === "payment" || col.key === "balance" ? "right" : "left" }} onClick={() => handleSort(col.key)}>
+                        {col.label} {sortConfig.key === col.key ? (sortConfig.dir === "asc" ? "\u25B2" : "\u25BC") : ""}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {paged.map((tx, i) => (
+                    <tr key={tx.id} style={{ background: i % 2 === 0 ? "transparent" : COLORS.surface }}>
+                      <td style={tdStyle}>{tx.date}</td>
+                      <td style={{ ...tdStyle, fontWeight: 600, maxWidth: 280, overflow: "hidden", textOverflow: "ellipsis" }}>{tx.payee}</td>
+                      <td style={{ ...tdStyle, whiteSpace: "normal", maxWidth: 300, fontSize: 12 }}>
+                        {tx.parsed ? (
+                          <span>
+                            <span style={{ color: COLORS.gold, fontFamily: "monospace" }}>{tx.details.split(" ")[0]}</span>{" "}
+                            <span style={{ color: COLORS.muted }}>{tx.parsed.expense}</span>
+                          </span>
+                        ) : tx.details}
+                      </td>
+                      <td style={{ ...tdStyle, fontFamily: "monospace", fontSize: 12 }}>{tx.chequeNo}</td>
+                      <td style={{ ...tdStyle, textAlign: "right", fontWeight: 700, color: tx.deposit > 0 ? COLORS.success : COLORS.muted }}>
+                        {tx.deposit > 0 ? `MWK ${tx.deposit.toLocaleString()}` : "\u2014"}
+                      </td>
+                      <td style={{ ...tdStyle, textAlign: "right", fontWeight: 700, color: tx.payment > 0 ? COLORS.danger : COLORS.muted }}>
+                        {tx.payment > 0 ? `MWK ${tx.payment.toLocaleString()}` : "\u2014"}
+                      </td>
+                      <td style={{ ...tdStyle, textAlign: "right", fontWeight: 700, color: tx.balance >= 0 ? COLORS.text : COLORS.danger }}>
+                        MWK {tx.balance.toLocaleString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div style={{ padding: "12px 20px", borderTop: `1px solid ${COLORS.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: 12, color: COLORS.muted }}>Page {currentPage} of {totalPages || 1}</span>
+              <div style={{ display: "flex", gap: 6 }}>
+                <button disabled={currentPage <= 1} onClick={() => setCurrentPage(p => p - 1)}
+                  style={{ ...navBtnStyle, opacity: currentPage <= 1 ? 0.3 : 1, fontSize: 12, padding: "6px 12px" }}>Prev</button>
+                <button disabled={currentPage >= totalPages} onClick={() => setCurrentPage(p => p + 1)}
+                  style={{ ...navBtnStyle, opacity: currentPage >= totalPages ? 0.3 : 1, fontSize: 12, padding: "6px 12px" }}>Next</button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
