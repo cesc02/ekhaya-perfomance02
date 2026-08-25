@@ -503,8 +503,6 @@ const TILES = [
 ];
 
 const SIZES = ["S", "M", "L", "XL"];
-const SHIPPING_FEE = 5000;
-const FREE_SHIPPING_MIN = 150000;
 
 function ProductCard({ product, onAdd }) {
   const [size, setSize] = useState("M");
@@ -569,8 +567,7 @@ function CheckoutModal({ cart, subtotal, onClose, onComplete }) {
   const [phone, setPhone] = useState("");
   const [errors, setErrors] = useState({});
 
-  const shipping = subtotal >= FREE_SHIPPING_MIN ? 0 : SHIPPING_FEE;
-  const total = subtotal + shipping;
+  const total = subtotal;
 
   const validateDetails = () => {
     const e = {};
@@ -687,9 +684,6 @@ function CheckoutModal({ cart, subtotal, onClose, onComplete }) {
                 <button className={`pay-method ${method === "airtel" ? "active" : ""}`} onClick={() => setMethod("airtel")}>
                   <img src="/images/airtel-logo.svg" alt="Airtel" style={{ height: 28, borderRadius: 4 }} />
                 </button>
-                <button className={`pay-method ${method === "mpamba" ? "active" : ""}`} onClick={() => setMethod("mpamba")}>
-                  <img src="/images/tnm-logo.svg" alt="TNM" style={{ height: 28, borderRadius: 4 }} />
-                </button>
                 <button className={`pay-method ${method === "bank" ? "active" : ""}`} onClick={() => setMethod("bank")}>
                   <img src="/images/fdh-logo.svg" alt="FDH Bank" style={{ height: 28, borderRadius: 4 }} />
                   <img src="/images/nb-logo.svg" alt="National Bank" style={{ height: 28, borderRadius: 4 }} />
@@ -698,7 +692,7 @@ function CheckoutModal({ cart, subtotal, onClose, onComplete }) {
 
               {method !== "bank" && (
                 <div className="field">
-                  <label>{method === "airtel" ? "Airtel Money" : "TNM Mpamba"} number</label>
+                  <label>Airtel Money number</label>
                   <input
                     className={errors.phone ? "err" : ""}
                     value={phone}
@@ -714,15 +708,6 @@ function CheckoutModal({ cart, subtotal, onClose, onComplete }) {
                 <div className="bank-box" style={{ background: "rgba(220,38,38,0.06)", borderColor: "rgba(220,38,38,0.25)" }}>
                   <div><b>Send payment to:</b></div>
                   <div style={{ fontSize: 20, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, margin: "6px 0", color: "var(--ink)" }}>10080128</div>
-                  <div><b>Name:</b> Ekhaya FC Store</div>
-                  <div style={{ marginTop: 6, fontSize: 12 }}>Use your order number as reference</div>
-                </div>
-              )}
-
-              {method === "mpamba" && (
-                <div className="bank-box" style={{ background: "rgba(234,88,12,0.06)", borderColor: "rgba(234,88,12,0.25)" }}>
-                  <div><b>Send payment to:</b></div>
-                  <div style={{ fontSize: 20, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, margin: "6px 0", color: "var(--ink)" }}>432389</div>
                   <div><b>Name:</b> Ekhaya FC Store</div>
                   <div style={{ marginTop: 6, fontSize: 12 }}>Use your order number as reference</div>
                 </div>
@@ -747,7 +732,6 @@ function CheckoutModal({ cart, subtotal, onClose, onComplete }) {
 
               <div className="summary-box">
                 <div className="summary-line"><span>Subtotal</span><span className="mono">K{subtotal.toLocaleString()}</span></div>
-                <div className="summary-line"><span>Shipping</span><span className="mono">{shipping === 0 ? "Free" : `K${shipping.toLocaleString()}`}</span></div>
                 <div className="summary-line total"><span>Total</span><span className="mono">K{total.toLocaleString()}</span></div>
               </div>
 
@@ -1124,21 +1108,6 @@ export default function EkhayaStore() {
         </div>
       </section>
 
-      <div className="trust-strip">
-        <div className="trust-item">
-          <Truck size={26} color="#B9922E" />
-          <div><h4>Nationwide delivery</h4><p>Free over K{FREE_SHIPPING_MIN.toLocaleString()}, tracked from dispatch</p></div>
-        </div>
-        <div className="trust-item">
-          <RotateCcw size={26} color="#B9922E" />
-          <div><h4>30-day returns</h4><p>Free exchanges on kit sizing</p></div>
-        </div>
-        <div className="trust-item">
-          <ShieldCheck size={26} color="#B9922E" />
-          <div><h4>Official club kit</h4><p>Authenticated Ekhaya FC merchandise</p></div>
-        </div>
-      </div>
-
       <footer className="footer">
         <div className="footer-inner">
           <div className="newsletter">
@@ -1158,20 +1127,23 @@ export default function EkhayaStore() {
             </div>
             <div>
               <h5>Help</h5>
-              <a href="#">Order status</a><a href="#">Shipping &amp; delivery</a><a href="#">Returns</a><a href="#">Contact us</a>
+              <a href="#">Returns</a><a href="#">Contact us</a>
             </div>
             <div>
-              <h5>Club</h5>
-              <a href="#">Our story</a><a href="#">Fixtures</a><a href="#">Membership</a>
+              <h5>Contact</h5>
+              <a href="tel:+265892308718">+265 892 30 87 18</a>
+              <a href="tel:+26588740311">+265 887 403 11</a>
             </div>
             <div>
               <h5>Legal</h5>
-              <a href="#">Privacy policy</a><a href="#">Terms of purchase</a>
+              <a href="#">Privacy policy</a>
+              <a href="#">Terms of purchase</a>
+              <a href="#">Refund policy</a>
             </div>
           </div>
           <div className="footer-bottom">
-            <span>\u00a9 2026 Ekhaya FC Official Store \u2014 Home of the game.</span>
-            <span>Men &amp; Women collections</span>
+            <span>\u00a9 2026 Ekhaya FC Official Store. All rights reserved.</span>
+            <span>Ekhaya FC is a registered football club in Malawi. All merchandise is official club-licensed product. Prices in Malawian Kwacha (MWK). Payments processed via Airtel Money, TNM Mpamba, FDH Bank, and National Bank of Malawi.</span>
           </div>
         </div>
       </footer>
